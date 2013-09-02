@@ -1,0 +1,19 @@
+
+http://www.nseindia.com/content/indices/histdata/CNX%20AUTOall01-08-2013-TO-19-08-2013.csv
+    historical data for pe pb and div yield by sector
+
+http://www.nseindia.com/content/indices/ind_close_all_19082013.csv
+    gives sector-wise information.. p/e p/b div yield volumes %change open close hi low turnover
+
+http://www.nseindia.com/content/indices/ind_cnxautolist.csv
+    list the companies in nse auto sector index
+
+http://nseindia.com/content/equities/EQUITY_L.csv
+    list of all securities on nse with date of listing, face value,etc
+
+http://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/getHistoricalData.jsp?symbol=CIPLA&fromDate=08-Feb-1995&toDate=19-Aug-2013&hiddDwnld=true
+    given sumbol name from date and to date downloads data in .csv format       ]
+
+http://www.moneycontrol.com/financials/cipla/ratios/C#C
+http://www.moneycontrol.com/financials/cipla/ratios/SBI
+    for financial data grab from..
