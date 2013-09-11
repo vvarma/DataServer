@@ -1,4 +1,4 @@
-package com.nvr.dataserver;
+package com.nvr.dataserver.util;
 
 /**
  * Created with IntelliJ IDEA.

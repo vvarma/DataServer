@@ -1,4 +1,4 @@
-package com.nvr.dataserver;
+package com.nvr.dataserver.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

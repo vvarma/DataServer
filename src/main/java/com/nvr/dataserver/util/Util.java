@@ -1,4 +1,4 @@
-package com.nvr.dataserver;
+package com.nvr.dataserver.util;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

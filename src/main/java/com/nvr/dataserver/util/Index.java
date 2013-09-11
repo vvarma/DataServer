@@ -1,4 +1,4 @@
-package com.nvr.dataserver;
+package com.nvr.dataserver.util;
 
 import java.util.ArrayList;
 import java.util.List;
