@@ -1,0 +1,33 @@
+Exchange
+-String name
+-String location
+-String currency
+
+Index
+-String name
+-Exchange exchange
+-List<Security> securityList
+-Date lastUpdatedOn
+
+Security
+-String name
+-String company
+-Exchange exchange
+-List<Index> indexList
+?Price currentPrice
+
+PricedSecurity extends Security
+-List<Price> priceList
+
+Price
+-Double openPrice, closePrice, lowPrice, highPrice, lastClosePrice
+-Long quantity
+-Date date
+
+rest
+
+List<String> getAllRegisteredExchange()
+List<Index> getAllIndexGivenExchange(String exchangeName)
+List<Security> getAllSecurityGivenExchange(String exchangeName)
+List<Security> getAllSecurityGivenIndex(String indexName)
+List<Price> getPriceListForGivenSecurity(String securityName)
