@@ -1,6 +1,10 @@
-import com.nvr.dataserver.util.Index;
+package com.nvr.data.loader;
 
+import com.nvr.data.domain.Index;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -31,7 +35,15 @@ public class IndexLoader extends AbstractLoader implements Loader {
         List<Index> indices=new ArrayList<Index>();
         File file=new File(fileName);
         int headerLine=findHeaderGivenFile(file);
-
+        BufferedReader br=new BufferedReader(new FileReader(file));
+        for (;headerLine>0;headerLine--)
+            br.readLine();
+        br.readLine();//do header related stuff here
+        String line;
+        while ((line=br.readLine())!=null){
+            String[] lineArr=line.split(",");
+            indices.add(new Index(lineArr[0]));
+        }
         return indices;
     }
 }

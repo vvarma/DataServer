@@ -1,3 +1,5 @@
+package com.nvr.data.loader;
+
 import java.io.*;
 import java.net.URL;
 
@@ -14,7 +16,7 @@ public abstract class AbstractLoader implements Loader{
 
         url.openConnection();
         InputStream reader = url.openStream();
-        String path=System.getProperty("java.io.tmpdir")+"/"+fileName;
+        String path=System.getProperty("java.io.tmpdir")+fileName;
         FileOutputStream writer = new FileOutputStream(path);
         byte[] buffer = new byte[153600];
         int totalBytesRead = 0;
