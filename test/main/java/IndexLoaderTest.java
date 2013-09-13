@@ -63,7 +63,7 @@ public class IndexLoaderTest {
             }
         } catch (IOException e) {
             Assert.assertTrue(false);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 }
