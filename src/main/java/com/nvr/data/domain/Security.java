@@ -1,4 +1,4 @@
-package com.nvr.dataserver.util;
+package com.nvr.data.domain;
 
 import java.util.Date;
 

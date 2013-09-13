@@ -1,69 +1,78 @@
+package com.nvr.data.loader;
+
+import com.nvr.data.domain.Security;
+import com.nvr.data.loader.SecurityLoader;
 import junit.framework.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
  * User: vvarma
  * Date: 9/10/13
- * Time: 9:08 PM
+ * Time: 9:43 PM
  * To change this template use File | Settings | File Templates.
  */
-public class IndexLoaderTest {
-
+public class SecurityLoaderTest {
     @Test
-    public void shouldGenerateUrlAndTestConnection(){
-        Loader loader=new IndexLoader();
+    public void shouldGenerateUrlGivenExchangeAndIndexName(){
+        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
+        paramMap.put("index","nifty");
         try {
-        URL url=loader.generateUrlGivenParamMap(paramMap);
-        Assert.assertNotNull(url);
-
+            URL url=loader.generateUrlGivenParamMap(paramMap);
+            Assert.assertNotNull(url);
             if (url!=null)
             url.openConnection();
+
+
         } catch (IOException e) {
-            Assert.assertTrue(false);
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
     @Test
-    public void shoudlDownloadFileGivenUrl(){
-        Loader loader=new IndexLoader();
+    public void shouldDownloadFileGivenUrl(){
+        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);
             Assert.assertNotNull(url);
-
             if (url!=null)
-                loader.downloadFileGivenUrl(url,"indices.csv");
+                loader.downloadFileGivenUrl(url,"securities.csv");
+
+
         } catch (IOException e) {
-            Assert.assertTrue(false);
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
     @Test
-    public void shouldParseFileAndGetIndices(){
-        Loader loader=new IndexLoader();
+    public void shouldParseFileAndLoadSecurities(){
+        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         String fileName;
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);
             Assert.assertNotNull(url);
-
             if (url!=null){
-                fileName=loader.downloadFileGivenUrl(url,"indices.csv");
-                loader.parseFileAndReturnListOfEntity(fileName);
+                fileName=loader.downloadFileGivenUrl(url,"securities.csv");
+                List<Security> securities=loader.parseFileAndReturnListOfEntity(fileName);
+                if (securities.size()<=0){
+                    Assert.assertTrue(false);
+                }
             }
         } catch (IOException e) {
-            Assert.assertTrue(false);
-            e.printStackTrace();
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        } catch (ParseException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 }

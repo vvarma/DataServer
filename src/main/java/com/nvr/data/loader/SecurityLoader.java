@@ -1,9 +1,15 @@
-import com.nvr.dataserver.util.Security;
+package com.nvr.data.loader;
 
+import com.nvr.data.domain.Security;
+
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +34,20 @@ public class SecurityLoader extends AbstractLoader implements Loader {
     }
 
     @Override
-    public List<Security> parseFileAndReturnListOfEntity(String fileName) throws IOException {
+    public List<Security> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
         List<Security> securities=new ArrayList<Security>();
         File file=new File(fileName);
         int headerLine=findHeaderGivenFile(file);
-        System.out.println(headerLine);
+        BufferedReader br=new BufferedReader(new FileReader(file));
+        for (;headerLine>0;headerLine--)
+            br.readLine();
+        br.readLine();//header related stuff here
+        String line;
+        while((line=br.readLine())!=null){
+            String[] lineArr=line.split(",");
+            SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
+            securities.add(new Security(lineArr[0],lineArr[1],lineArr[2],fmt.parse(lineArr[3]),lineArr[6]));
+        }
         return securities;
     }
 }
