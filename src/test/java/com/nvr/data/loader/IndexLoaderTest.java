@@ -73,13 +73,12 @@ public class IndexLoaderTest {
             }
         } catch (IOException e) {
             Assert.assertTrue(false);
-<<<<<<< HEAD:test/main/java/IndexLoaderTest.java
+
             e.printStackTrace();
-=======
+
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ParseException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
->>>>>>> 066316b862322b5590015c6bd86003581c6c5cac:test/main/java/com/nvr/data/loader/IndexLoaderTest.java
+            e.printStackTrace();
         }
     }
 }

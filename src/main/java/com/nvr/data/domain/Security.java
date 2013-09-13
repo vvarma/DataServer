@@ -1,5 +1,8 @@
 package com.nvr.data.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,7 +12,9 @@ import java.util.Date;
  * Time: 6:08 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Security {
+@Entity
+public class Security implements Serializable {
+    @Id
     final String symbol;
     final String company;
     final String series;
