@@ -1,6 +1,6 @@
 package com.nvr.data.repository;
 
-
+import com.nvr.data.domain.Indice;
 import com.nvr.data.domain.Security;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -15,22 +15,34 @@ import org.springframework.transaction.annotation.Transactional;
  * Created with IntelliJ IDEA.
  * User: vvarma
  * Date: 9/14/13
- * Time: 2:01 AM
+ * Time: 3:48 AM
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:META-INF/spring/applicationContext.xml"})
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
-public class TestSecurityDao {
+public class TestIndexDao {
     @Autowired
-    SecurityDao securityDao;
-
+    IndexDao indexDao;
     @Test
-    public void shouldCreateSecurity(){
-        Security security=new Security("CIPLA","EQ","ISI");
-        securityDao.save(security);
-        Assert.assertTrue(securityDao.findAll().size()>0);
-    }
+    public void shouldCreateIndex(){
+        Indice indice =new Indice("nifty");
+        indexDao.save(indice);
+        //Assert.assertTrue(indexDao.findAll().size()>0);
+        Assert.assertNotNull(indexDao.findOne("nifty"));
 
+    }
+    @Test
+    public  void shouldCreateIndexSecurities(){
+        Security security1=new Security("CIPLA","EQ","ISIN");
+        Security security2=new Security("AMTEK","EQ","ISO");
+        Indice indice =new Indice("sifty");
+        indice.addSecurity(security1);
+        security1.addIndex(indice);
+        indice.addSecurity(security2);
+        security2.addIndex(indice);
+        indexDao.save(indice);
+        System.out.println("123" + indexDao.findAll());
+    }
 }

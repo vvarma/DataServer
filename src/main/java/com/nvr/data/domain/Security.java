@@ -1,9 +1,10 @@
 package com.nvr.data.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +21,9 @@ public class Security implements Serializable {
     final String series;
     final Date listing;
     final String isinNumber;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security")})
+    final List<Indice> indiceList;
 
     public Security(String symbol, String company, String series, Date listing, String isinNumber) {
         this.symbol = symbol;
@@ -27,6 +31,14 @@ public class Security implements Serializable {
         this.series = series;
         this.listing = listing;
         this.isinNumber = isinNumber;
+        indiceList =new ArrayList<Indice>();
+    }
+
+    public void addIndex(Indice indice){
+        indiceList.add(indice);
+    }
+    public List<Indice> getIndiceList() {
+        return indiceList;
     }
 
     public String getSymbol() {
@@ -61,11 +73,7 @@ public class Security implements Serializable {
     }
 
     public Security(String symbol, String series, String isinNumber) {
-        this.symbol = symbol;
-        this.series = series;
-        this.isinNumber = isinNumber;
-        company=null;
-        listing=null;
+        this(symbol,null,series,null,isinNumber);
     }
 
     @Override

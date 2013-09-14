@@ -1,6 +1,7 @@
 package com.nvr.data.repository.annotation;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.annotation.ElementType;
@@ -18,7 +19,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Repository
-@Transactional
+@Transactional(propagation = Propagation.REQUIRED)
 public @interface AppRepository {
     String value() default "";
 }

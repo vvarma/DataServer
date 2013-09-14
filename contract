@@ -1,16 +1,16 @@
 Exchange
--String name
+-String indexName
 -String location
 -String currency
 
 Index
--String name
+-String indexName
 -Exchange exchange
 -List<Security> securityList
 -Date lastUpdatedOn
 
 Security
--String name
+-String indexName
 -String company
 -Exchange exchange
 -List<Index> indexList

@@ -1,6 +1,6 @@
 package com.nvr.data.loader;
 
-import com.nvr.data.domain.Index;
+import com.nvr.data.domain.Indice;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -31,8 +31,8 @@ public class IndexLoader extends AbstractLoader implements Loader {
     }
 
     @Override
-    public  List<Index> parseFileAndReturnListOfEntity(String fileName) throws IOException {
-        List<Index> indices=new ArrayList<Index>();
+    public  List<Indice> parseFileAndReturnListOfEntity(String fileName) throws IOException {
+        List<Indice> indices=new ArrayList<Indice>();
         File file=new File(fileName);
         int headerLine=findHeaderGivenFile(file);
         BufferedReader br=new BufferedReader(new FileReader(file));
@@ -42,7 +42,7 @@ public class IndexLoader extends AbstractLoader implements Loader {
         String line;
         while ((line=br.readLine())!=null){
             String[] lineArr=line.split(",");
-            indices.add(new Index(lineArr[0]));
+            indices.add(new Indice(lineArr[0]));
         }
         return indices;
     }

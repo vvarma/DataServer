@@ -1,6 +1,6 @@
 package com.nvr.data.loader;
 
-import com.nvr.data.domain.Index;
+import com.nvr.data.domain.Indice;
 import com.nvr.data.domain.Security;
 import junit.framework.Assert;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class SecurityIndexLoaderTest {
     List<Security> securities;
     SecurityLoader securityLoader;
     IndexLoader indexLoader;
-    List<Index> indices;
+    List<Indice> indices;
     @Before
     public void initSecurityListAndIndexList(){
         securityLoader=new SecurityLoader();
@@ -52,10 +52,10 @@ public class SecurityIndexLoaderTest {
     public void shouldGenerateUrlGivenIndexName(){
         SecurityIndexLoader loader=new SecurityIndexLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
-        for (Index index:indices){
+        for (Indice indice :indices){
             paramMap.put("exchange","nse");
             paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_cnx");
-            paramMap.put("index",index.getName());
+            paramMap.put("indice", indice.getIndexName());
             paramMap.put("tailUrl","list.csv");
             try {
                 URL url=loader.generateUrlGivenParamMap(paramMap);
@@ -70,15 +70,15 @@ public class SecurityIndexLoaderTest {
     public void shouldDownloadFileGivenUrl(){
         SecurityIndexLoader loader=new SecurityIndexLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
-        for (Index index:indices){
+        for (Indice indice :indices){
             paramMap.put("exchange","nse");
             paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_cnx");
-            paramMap.put("index",index.getName());
+            paramMap.put("indice", indice.getIndexName());
             paramMap.put("tailUrl","list.csv");
             try {
                 URL url=loader.generateUrlGivenParamMap(paramMap);
                 Assert.assertNotNull(url);
-                String fileName=loader.downloadFileGivenUrl(url,index.getName()+".csv");
+                String fileName=loader.downloadFileGivenUrl(url, indice.getIndexName()+".csv");
             } catch (MalformedURLException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             } catch (IOException e) {
@@ -90,17 +90,17 @@ public class SecurityIndexLoaderTest {
     public void shouldParseFileAndGetListOfIndicesWithSecurityInfo(){
         SecurityIndexLoader loader=new SecurityIndexLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
-        for (Index index:indices){
+        for (Indice indice :indices){
             paramMap.put("exchange","nse");
             paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_");
-            paramMap.put("index",index.getName());
+            paramMap.put("indice", indice.getIndexName());
             paramMap.put("tailUrl","list.csv");
             try {
                 URL url=loader.generateUrlGivenParamMap(paramMap);
                 Assert.assertNotNull(url);
                 String fileName= null;
                 try {
-                    fileName = loader.downloadFileGivenUrl(url,index.getName()+".csv");
+                    fileName = loader.downloadFileGivenUrl(url, indice.getIndexName()+".csv");
                 } catch (IOException e) {
                     e.printStackTrace();
                     continue;
@@ -109,7 +109,7 @@ public class SecurityIndexLoaderTest {
                 for (Security s:fakeSecurities){
                     if (securities.contains(s)){
                         int i=securities.indexOf(s);
-                        index.addSecurity(securities.get(i));
+                        indice.addSecurity(securities.get(i));
                     }
                 }
 
@@ -121,8 +121,8 @@ public class SecurityIndexLoaderTest {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
         }
-        for (Index index:indices){
-            System.out.println("Index " +index.getName()+ " no of securities "+index.getSecurities().size());
+        for (Indice indice :indices){
+            System.out.println("Indice " + indice.getIndexName()+ " no of securities "+ indice.getSecurities().size());
         }
     }
 }

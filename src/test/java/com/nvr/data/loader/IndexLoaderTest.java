@@ -1,8 +1,6 @@
 package com.nvr.data.loader;
 
-import com.nvr.data.domain.Index;
-import com.nvr.data.loader.IndexLoader;
-import com.nvr.data.loader.Loader;
+import com.nvr.data.domain.Indice;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -66,7 +64,7 @@ public class IndexLoaderTest {
 
             if (url!=null){
                 fileName=loader.downloadFileGivenUrl(url,"indices.csv");
-                List<Index> indices= loader.parseFileAndReturnListOfEntity(fileName);
+                List<Indice> indices= loader.parseFileAndReturnListOfEntity(fileName);
                 if (indices.size()<=0){
                     Assert.assertTrue(false);
                 }
