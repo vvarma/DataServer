@@ -1,11 +1,20 @@
 <?xmlversion = "1.0" encoding="UTF-8" ?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:tx="http://www.springframework.org/schema/tx"
-xsi:schemaLocation="http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/tx
-http://www.springframework.org/schema/tx/spring-tx.xsd">
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--component scan-->
+    <context:component-scan base-package="com.nvr.data.repository" use-default-filters="false">
+        <context:include-filter
+                expression="org.springframework.stereotype.Repository"
+                type="annotation"/>
+    </context:component-scan>
 
     <bean id="myEmf"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

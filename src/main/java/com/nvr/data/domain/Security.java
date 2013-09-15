@@ -21,7 +21,7 @@ public class Security implements Serializable {
     final String series;
     final Date listing;
     final String isinNumber;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security")})
     final List<Indice> indiceList;
 

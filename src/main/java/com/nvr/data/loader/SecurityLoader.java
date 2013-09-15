@@ -1,6 +1,7 @@
 package com.nvr.data.loader;
 
 import com.nvr.data.domain.Security;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,6 +22,7 @@ import java.util.Map;
  * Time: 9:39 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public class SecurityLoader extends AbstractLoader implements Loader {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {

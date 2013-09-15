@@ -11,9 +11,10 @@ import org.springframework.stereotype.Repository;
  * Time: 12:55 AM
  * To change this template use File | Settings | File Templates.
  */
+
 @AppRepository
-public class SecurityDao extends AbstractJpaDAO<Security> {
-    public SecurityDao() {
+public class SecurityJpaDao extends AbstractJpaDAO<Security> {
+    public SecurityJpaDao() {
         setClazz(Security.class);
     }
 }

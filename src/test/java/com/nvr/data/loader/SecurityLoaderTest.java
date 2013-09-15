@@ -4,6 +4,13 @@ import com.nvr.data.domain.Security;
 import com.nvr.data.loader.SecurityLoader;
 import junit.framework.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,10 +26,16 @@ import java.util.Map;
  * Time: 9:43 PM
  * To change this template use File | Settings | File Templates.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
+@TransactionConfiguration(defaultRollback = true)
+@Transactional
 public class SecurityLoaderTest {
+    @Autowired
+    @Qualifier(value = "securityLoader")
+    Loader loader;
     @Test
     public void shouldGenerateUrlGivenExchangeAndIndexName(){
-        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         paramMap.put("index","nifty");
@@ -39,7 +52,6 @@ public class SecurityLoaderTest {
     }
     @Test
     public void shouldDownloadFileGivenUrl(){
-        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         try {
@@ -55,7 +67,6 @@ public class SecurityLoaderTest {
     }
     @Test
     public void shouldParseFileAndLoadSecurities(){
-        SecurityLoader loader=new SecurityLoader();
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         String fileName;

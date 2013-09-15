@@ -26,7 +26,7 @@ public class SecurityIndexLoader extends AbstractLoader implements Loader {
         URL url=null;
         String exchange=paramMap.get("exchange");
         String seedUrl=paramMap.get("seedUrl");
-        String indexName=paramMap.get("index");
+        String indexName=paramMap.get("indice");
         indexName=indexName.replace(" ", "");
         String urlRest=paramMap.get("tailUrl");
         url=new URL(seedUrl+indexName.toLowerCase()+urlRest);

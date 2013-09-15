@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/applicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class TestIndexDao {
@@ -43,6 +43,10 @@ public class TestIndexDao {
         indice.addSecurity(security2);
         security2.addIndex(indice);
         indexDao.save(indice);
-        System.out.println("123" + indexDao.findAll());
+        Indice indice1=indexDao.findOne("sifty");
+        Indice indice2=indexDao.findOne("nifty");
+        Assert.assertEquals(indice1,indice);
+        Assert.assertNull(indice2);
+        Assert.assertTrue(indice1.getSecurities().size()>0);
     }
 }

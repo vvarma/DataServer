@@ -1,5 +1,7 @@
 package com.nvr.data.repository;
 
+import com.nvr.data.repository.annotation.AppRepository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
@@ -12,7 +14,8 @@ import java.util.List;
  * Time: 12:44 AM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class AbstractJpaDAO<T extends Serializable> {
+
+public abstract class AbstractJpaDAO<T extends Serializable> implements JpaDao<T>{
     private Class<T> clazz;
     @PersistenceContext
     EntityManager entityManager;

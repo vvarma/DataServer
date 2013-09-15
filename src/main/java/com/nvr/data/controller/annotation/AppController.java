@@ -1,23 +1,26 @@
-package com.nvr.data.service.annotation;
+package com.nvr.data.controller.annotation;
 
-/**
- * Created with IntelliJ IDEA.
- * User: vvarma
- * Date: 9/13/13
- * Time: 11:13 PM
- * To change this template use File | Settings | File Templates.
- */
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: vvarma
+ * Date: 9/15/13
+ * Time: 1:58 AM
+ * To change this template use File | Settings | File Templates.
+ */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Service
-@Transactional(propagation = Propagation.REQUIRED)
-public @interface AppService {
+@Controller
+@Transactional(propagation = Propagation.REQUIRES_NEW)
+public @interface AppController {
     String value() default "";
 }

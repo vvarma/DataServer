@@ -1,5 +1,7 @@
 package com.nvr.data.loader;
 
+import org.springframework.stereotype.Component;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -15,6 +17,7 @@ import java.util.Map;
  * Time: 9:06 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public interface Loader {
     URL generateUrlGivenParamMap(Map<String,String> paramMap) throws MalformedURLException;
     String downloadFileGivenUrl(URL url, String fileName) throws IOException;

@@ -19,18 +19,18 @@ import org.springframework.transaction.annotation.Transactional;
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:META-INF/spring/applicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class TestSecurityDao {
     @Autowired
-    SecurityDao securityDao;
+    SecurityJpaDao securityJpaDao;
 
     @Test
     public void shouldCreateSecurity(){
         Security security=new Security("CIPLA","EQ","ISI");
-        securityDao.save(security);
-        Assert.assertTrue(securityDao.findAll().size()>0);
+        securityJpaDao.save(security);
+        Assert.assertTrue(securityJpaDao.findAll().size()>0);
     }
 
 }

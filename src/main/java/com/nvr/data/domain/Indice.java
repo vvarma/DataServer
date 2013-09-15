@@ -16,7 +16,7 @@ import java.util.List;
 public class Indice implements Serializable {
     @Id
     final String indexName;
-    @ManyToMany(mappedBy = "indiceList",cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "indiceList",cascade = CascadeType.PERSIST)
     final List<Security> securities;
 
     public Indice(String indexName) {

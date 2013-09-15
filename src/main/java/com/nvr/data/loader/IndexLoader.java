@@ -1,6 +1,8 @@
 package com.nvr.data.loader;
 
 import com.nvr.data.domain.Indice;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,6 +21,8 @@ import java.util.Map;
  * Time: 9:07 PM
  * To change this template use File | Settings | File Templates.
  */
+
+@Qualifier(value = "IndexLoader")
 public class IndexLoader extends AbstractLoader implements Loader {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {

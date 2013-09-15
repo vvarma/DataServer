@@ -6,7 +6,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
-    <import resource="applicationContext-database.xml"/>
+    <import resource="applicationContext-repository.xml"/>
+    <import resource="applicationContext-controller.xml"/>
 
     <!--using property place holder-->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -17,9 +18,15 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!--component scan-->
     <context:component-scan base-package="com.nvr.data">
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+        <context:exclude-filter expression="org.springframework.stereotype.Repository" type="annotation"/>
+        <context:exclude-filter expression="org.springframework.stereotype.Service" type="annotation"/>
     </context:component-scan>
     <!-- Enable handling of java.util.logging through SLF4J -->
     <bean id="slf4JBridgeHandler" class="org.slf4j.bridge.SLF4JBridgeHandler"/>
     <bean class="org.slf4j.bridge.SLF4JBridgeHandler"/>
 
+    <bean id="indexLoader" class="com.nvr.data.loader.IndexLoader" parent="loader"/>
+    <bean id="securityLoader" class="com.nvr.data.loader.SecurityLoader" parent="loader"/>
+    <bean id="securityIndexLoader" class="com.nvr.data.loader.SecurityIndexLoader" parent="loader"/>
+    <bean id="loader" class="com.nvr.data.loader.Loader" abstract="true"/>
 </beans>
