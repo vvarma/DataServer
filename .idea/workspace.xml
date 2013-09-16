@@ -2,24 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78cda0ff-8e7c-41e3-9085-4b19280762f8" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext-database.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext-repository.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/META-INF/spring/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/AbstractJpaDAO.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/AbstractJpaDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/annotation/AppService.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/annotation/AppService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/IndexLoader.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/IndexLoader.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/IDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/Dao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/annotation/AppRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/annotation/AppRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/IndexController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/IndexController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Indice.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Indice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/Loader.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/Loader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Security.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Security.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityIndexLoader.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityIndexLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityIndexLoaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityIndexLoaderTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/SecurityController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/SecurityController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityLoader.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityLoader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityLoaderTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityLoaderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestIndexDao.java" afterPath="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestIndexDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityService.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java" afterPath="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DataServer.iws" />
@@ -27,7 +23,7 @@
     <file path="/paths" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1376998578201" ignored="false" />
     <file path="/url.properties" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377005687217" ignored="false" />
     <file path="/Util.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377161458599" ignored="false" />
-    <file path="/Dummy.txt" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379232577248" ignored="false" />
+    <file path="/Dummy.txt" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379336483108" ignored="false" />
     <file path="/filepath.properties" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377005663777" ignored="false" />
     <file path="/SecuritiesLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377003922942" ignored="false" />
     <file path="/SecuritiesLoaderMain.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377003684525" ignored="false" />
@@ -36,7 +32,7 @@
     <file path="/IndicesLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377086263692" ignored="false" />
     <file path="/a.dummy" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379193033349" ignored="false" />
     <file path="/IndicesLoaderMain.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377006034856" ignored="false" />
-    <file path="/Security.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379157057392" ignored="false" />
+    <file path="/Security.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379274822887" ignored="false" />
     <file path="/EntityRegister.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1377162285738" ignored="false" />
     <file path="/CSVReder.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1378128952670" ignored="false" />
     <file path="/ParseCSV.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1378184025125" ignored="false" />
@@ -52,23 +48,23 @@
     <file path="/Loader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379210921219" ignored="false" />
     <file path="/IndexLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379203748806" ignored="false" />
     <file path="/LoaderTest.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1378829327741" ignored="false" />
-    <file path="/SecurityLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1378836078903" ignored="false" />
+    <file path="/SecurityLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379273557733" ignored="false" />
     <file path="/SecurityLoaderTest.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379211380596" ignored="false" />
     <file path="/fragment.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379202279479" ignored="false" />
     <file path="/AbstractLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379158153083" ignored="false" />
-    <file path="/IndexLoaderTest.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379210762926" ignored="false" />
+    <file path="/IndexLoaderTest.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379339507035" ignored="false" />
     <file path="/a.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379088318066" ignored="false" />
     <file path="/pom.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379192087963" ignored="false" />
-    <file path="/logback.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379193268685" ignored="false" />
-    <file path="/applicationContext.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379211311182" ignored="false" />
+    <file path="/logback.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379337883117" ignored="false" />
+    <file path="/applicationContext.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379275768548" ignored="false" />
     <file path="/applicationContext-database.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379189217132" ignored="false" />
     <file path="/database.properties" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379109720370" ignored="false" />
     <file path="/AbstractJpaDAO.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379200533774" ignored="false" />
     <file path="/SecurityDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379200734336" ignored="false" />
     <file path="/IDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379100845136" ignored="false" />
     <file path="/IndexDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379211810529" ignored="false" />
-    <file path="/AppRepository.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379114345756" ignored="false" />
-    <file path="/TestSecurityDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379200705877" ignored="false" />
+    <file path="/AppRepository.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379329322279" ignored="false" />
+    <file path="/TestSecurityDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379338334885" ignored="false" />
     <file path="/TestIndexDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379157237396" ignored="false" />
     <file path="/Indice.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379157024704" ignored="false" />
     <file path="/SecurityIndexLoader.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379158094720" ignored="false" />
@@ -80,12 +76,19 @@
     <file path="/AppController.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379194746277" ignored="false" />
     <file path="/AppService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379190553214" ignored="false" />
     <file path="/applicationContext-controller.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379194501554" ignored="false" />
-    <file path="/SecurityController.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379199197171" ignored="false" />
-    <file path="/IndexService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379199995598" ignored="false" />
+    <file path="/SecurityController.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379273294085" ignored="false" />
+    <file path="/IndexService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379276596564" ignored="false" />
     <file path="/JpaDao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379200375101" ignored="false" />
-    <file path="/SecurityService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379202258504" ignored="false" />
-    <file path="/SecurityServiceImpl.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379202312305" ignored="false" />
+    <file path="/SecurityService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379271189594" ignored="false" />
+    <file path="/SecurityServiceImpl.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379338549933" ignored="false" />
     <file path="/SecurityIndexLoaderTest.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379211592227" ignored="false" />
+    <file path="/Dao.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379270729748" ignored="false" />
+    <file path="/applicationContext-service.xml" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379339053462" ignored="false" />
+    <file path="/TestSecurityService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379338346818" ignored="false" />
+    <file path="/SecurityId.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379274888364" ignored="false" />
+    <file path="/IndexServiceImpl.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379277840976" ignored="false" />
+    <file path="/TestindexService.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379339523781" ignored="false" />
+    <file path="/IndexController.java" changelist="78cda0ff-8e7c-41e3-9085-4b19280762f8" time="1379278271895" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +103,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -136,7 +140,6 @@
         <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -146,19 +149,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SecurityLoaderTest.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityLoaderTest.java">
+      <file leaf-file-name="SecurityServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="34" selection-start="2302" selection-end="2913" vertical-scroll-proportion="0.34390652">
+            <state line="30" column="0" selection-start="899" selection-end="911" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#1330#1346#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="applicationContext-service.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext-service.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="4" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecurityJpaDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java">
+      <file leaf-file-name="IndexServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/IndexServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+            <state line="31" column="38" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logback.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="48" selection-start="620" selection-end="620" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -167,34 +190,52 @@
       <file leaf-file-name="AbstractJpaDAO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/AbstractJpaDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="22" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
+            <state line="37" column="0" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JpaDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/JpaDao.java">
+      <file leaf-file-name="Security.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Security.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="17" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
+            <state line="29" column="23" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/IndexDao.java">
+      <file leaf-file-name="TestSecurityService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestSecurityService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="14" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+            <state line="32" column="8" selection-start="1113" selection-end="1155" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestIndexDao.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestIndexDao.java">
+      <file leaf-file-name="IndexLoaderTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="25" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0">
+            <state line="40" column="0" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestindexService.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestindexService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="38" selection-start="934" selection-end="934" vertical-scroll-proportion="1.2895927">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestSecurityDao.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -218,22 +259,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/service/IndexService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/AbstractJpaDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityDao.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/JpaDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/SecurityId.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityLoader.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/IndexLoader.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/loader/Loader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/SecurityController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/controller/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityLoaderTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityIndexLoaderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/IndexDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Security.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Indice.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/repository/annotation/AppRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext-service.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nvr/data/service/IndexServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestSecurityService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestindexService.java" />
       </list>
     </option>
   </component>
@@ -305,10 +346,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
-    <option name="y" value="-4" />
-    <option name="width" value="1282" />
-    <option name="height" value="805" />
+    <option name="y" value="24" />
+    <option name="width" value="1280" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -336,6 +376,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -369,6 +410,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataServer" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -677,6 +752,10 @@
               <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="domain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -744,7 +823,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -760,14 +838,14 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -779,14 +857,70 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SecurityLoaderTest.shouldDownloadFileGivenUrl">
-    <configuration default="false" name="IndexLoaderTest.shouldGenerateUrlAndTestConnection" type="JUnit" factoryName="JUnit" temporary="true">
+  <component name="RunManager" selected="JUnit.TestindexService.shouldGetAllIndice">
+    <configuration default="false" name="TestSecurityService.shouldLoadAllSecurity" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="DataServer" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.nvr.data.loader" />
-      <option name="MAIN_CLASS_NAME" value="com.nvr.data.loader.IndexLoaderTest" />
-      <option name="METHOD_NAME" value="shouldGenerateUrlAndTestConnection" />
+      <option name="PACKAGE_NAME" value="com.nvr.data.service" />
+      <option name="MAIN_CLASS_NAME" value="com.nvr.data.service.TestSecurityService" />
+      <option name="METHOD_NAME" value="shouldLoadAllSecurity" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestSecurityService" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="DataServer" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.nvr.data.service" />
+      <option name="MAIN_CLASS_NAME" value="com.nvr.data.service.TestSecurityService" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestindexService.shouldGetAllIndice" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="DataServer" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.nvr.data.service" />
+      <option name="MAIN_CLASS_NAME" value="com.nvr.data.service.TestindexService" />
+      <option name="METHOD_NAME" value="shouldGetAllIndice" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -802,34 +936,12 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="IndexLoaderTest.shouldParseFileAndGetIndices" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="TestindexService" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="DataServer" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.nvr.data.loader" />
-      <option name="MAIN_CLASS_NAME" value="com.nvr.data.loader.IndexLoaderTest" />
-      <option name="METHOD_NAME" value="shouldParseFileAndGetIndices" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="IndexLoaderTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="DataServer" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.nvr.data.loader" />
-      <option name="MAIN_CLASS_NAME" value="com.nvr.data.loader.IndexLoaderTest" />
+      <option name="PACKAGE_NAME" value="com.nvr.data.service" />
+      <option name="MAIN_CLASS_NAME" value="com.nvr.data.service.TestindexService" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -846,36 +958,14 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <configuration default="false" name="SecurityLoaderTest.shouldParseFileAndLoadSecurities" type="JUnit" factoryName="JUnit" temporary="true">
+    <configuration default="false" name="TestSecurityDao" type="JUnit" factoryName="JUnit" temporary="true">
       <module name="DataServer" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.nvr.data.loader" />
-      <option name="MAIN_CLASS_NAME" value="com.nvr.data.loader.SecurityLoaderTest" />
-      <option name="METHOD_NAME" value="shouldParseFileAndLoadSecurities" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="SecurityLoaderTest.shouldDownloadFileGivenUrl" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="DataServer" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.nvr.data.loader" />
-      <option name="MAIN_CLASS_NAME" value="com.nvr.data.loader.SecurityLoaderTest" />
-      <option name="METHOD_NAME" value="shouldDownloadFileGivenUrl" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.nvr.data.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.nvr.data.repository.TestSecurityDao" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -926,19 +1016,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -964,6 +1041,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1001,19 +1091,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest.shouldGenerateUrlAndTestConnection" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest.shouldParseFileAndGetIndices" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.SecurityLoaderTest.shouldParseFileAndLoadSecurities" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.SecurityLoaderTest.shouldDownloadFileGivenUrl" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.TestSecurityService.shouldLoadAllSecurity" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TestSecurityService" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TestindexService.shouldGetAllIndice" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TestindexService" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.TestSecurityDao" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.SecurityLoaderTest.shouldDownloadFileGivenUrl" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.SecurityLoaderTest.shouldParseFileAndLoadSecurities" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest.shouldGenerateUrlAndTestConnection" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.IndexLoaderTest.shouldParseFileAndGetIndices" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestindexService.shouldGetAllIndice" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestSecurityService" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestSecurityService.shouldLoadAllSecurity" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.TestSecurityDao" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TestindexService" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1048,27 +1138,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-4" width="1282" height="805" extended-state="6" />
+    <frame x="0" y="24" width="1280" height="776" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39976552" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39878234" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5083714" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325723" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21474878" sideWeight="0.49010655" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22609401" sideWeight="0.49162862" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.49010655" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50879765" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24959481" sideWeight="0.49162862" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5083714" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.325723" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1142,119 +1232,114 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="4" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+        <state line="28" column="0" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.4296578">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityIndexLoader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="509" selection-end="509" vertical-scroll-proportion="0.30604982">
+        <state line="20" column="26" selection-start="495" selection-end="495" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Security.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="23" selection-start="784" selection-end="784" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/domain/Indice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="21" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/annotation/AppRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="50" selection-start="664" selection-end="664" vertical-scroll-proportion="0.45652175" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="11" selection-start="346" selection-end="346" vertical-scroll-proportion="0.29347825">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/annotation/AppService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/loader/AbstractLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="22" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/loader/IndexLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/loader/Loader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="439" selection-end="439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="52" selection-start="565" selection-end="565" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/loader/SecurityLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="864" selection-end="1059" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityIndexLoaderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="65" selection-start="6208" selection-end="6208" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1617#1633#0" expanded="true" />
-            <element signature="e#2705#2721#0" expanded="true" />
-            <element signature="e#3436#3452#0" expanded="true" />
-            <element signature="e#4449#4465#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestIndexDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="25" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/JpaDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="17" selection-start="288" selection-end="288" vertical-scroll-proportion="0.0">
+        <state line="20" column="18" selection-start="673" selection-end="673" vertical-scroll-proportion="0.51086956">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/AbstractJpaDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="22" selection-start="408" selection-end="408" vertical-scroll-proportion="0.0">
+        <state line="37" column="0" selection-start="967" selection-end="967" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/IndexDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="14" selection-start="295" selection-end="295" vertical-scroll-proportion="0.0">
+        <state line="14" column="48" selection-start="620" selection-end="620" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/SecurityLoaderTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/repository/TestSecurityDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="34" selection-start="2302" selection-end="2913" vertical-scroll-proportion="0.34390652">
+        <state line="30" column="0" selection-start="982" selection-end="982" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/repository/SecurityJpaDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext-service.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="13" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
+        <state line="14" column="4" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/SecurityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="899" selection-end="911" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#1330#1346#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nvr/data/service/IndexServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="38" selection-start="897" selection-end="897" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestSecurityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="8" selection-start="1113" selection-end="1155" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/loader/IndexLoaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/nvr/data/service/TestindexService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="38" selection-start="934" selection-end="934" vertical-scroll-proportion="1.2895927">
           <folding />
         </state>
       </provider>

@@ -1,7 +1,5 @@
-package com.nvr.data.repository;
+package com.nvr.data.service;
 
-
-import com.nvr.data.domain.Security;
 import junit.framework.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,24 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created with IntelliJ IDEA.
  * User: vvarma
- * Date: 9/14/13
- * Time: 2:01 AM
+ * Date: 9/16/13
+ * Time: 2:02 AM
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
-public class TestSecurityDao {
+public class TestindexService {
     @Autowired
-    SecurityJpaDao securityJpaDao;
-
+    IndexService indexService;
     @Test
-    public void shouldCreateSecurity(){
-
-        Security security=new Security("CIPLA","EQ","ISI");
-        securityJpaDao.save(security);
-        Assert.assertTrue(securityJpaDao.findAll().size()>0);
+    public void shouldGetAllIndice(){
+        indexService.loadIndice();
+        Assert.assertTrue(indexService.getAllIndice().size()>0);
     }
-
 }

@@ -1,6 +1,8 @@
 package com.nvr.data.controller;
 
 import com.nvr.data.controller.annotation.AppController;
+import com.nvr.data.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,10 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @AppController
 @RequestMapping(value="/index")
 public class IndexController {
-
+    @Autowired
+    IndexService indexService;
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<String> getAllIndex(){
+        System.out.println(indexService.getAllIndice().size());
         return new ResponseEntity<String>("works", HttpStatus.OK);
     }
 

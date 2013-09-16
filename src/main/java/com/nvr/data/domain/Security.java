@@ -14,16 +14,21 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
+@IdClass(SecurityId.class)
 public class Security implements Serializable {
     @Id
-    final String symbol;
-    final String company;
-    final String series;
-    final Date listing;
-    final String isinNumber;
+    String symbol;
+    String company;
+    @Id
+    String series;
+    Date listing;
+    String isinNumber;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security")})
-    final List<Indice> indiceList;
+    /*@JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security"),@JoinColumn(name = "series")})*/
+    List<Indice> indiceList;
+
+    public Security() {
+    }
 
     public Security(String symbol, String company, String series, Date listing, String isinNumber) {
         this.symbol = symbol;

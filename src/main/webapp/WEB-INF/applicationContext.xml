@@ -8,6 +8,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
     <import resource="applicationContext-repository.xml"/>
     <import resource="applicationContext-controller.xml"/>
+    <import resource="applicationContext-service.xml"/>
 
     <!--using property place holder-->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -24,7 +25,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- Enable handling of java.util.logging through SLF4J -->
     <bean id="slf4JBridgeHandler" class="org.slf4j.bridge.SLF4JBridgeHandler"/>
     <bean class="org.slf4j.bridge.SLF4JBridgeHandler"/>
-
+    <!--Loaders-->
     <bean id="indexLoader" class="com.nvr.data.loader.IndexLoader" parent="loader"/>
     <bean id="securityLoader" class="com.nvr.data.loader.SecurityLoader" parent="loader"/>
     <bean id="securityIndexLoader" class="com.nvr.data.loader.SecurityIndexLoader" parent="loader"/>

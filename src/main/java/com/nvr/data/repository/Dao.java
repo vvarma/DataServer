@@ -1,6 +1,7 @@
 package com.nvr.data.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,6 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Time: 1:03 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface IDao extends JpaRepository {
+@Component
+public interface Dao extends JpaRepository {
 
 }

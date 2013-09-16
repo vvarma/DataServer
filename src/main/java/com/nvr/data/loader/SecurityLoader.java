@@ -26,10 +26,10 @@ import java.util.Map;
 public class SecurityLoader extends AbstractLoader implements Loader {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
-        URL url=null;
-        String exchange=paramMap.get("exchange");
-        if (exchange!=null){
-            url=new URL("http://nseindia.com/content/equities/EQUITY_L.csv");
+        URL url = null;
+        String exchange = paramMap.get("exchange");
+        if (exchange != null) {
+            url = new URL("http://nseindia.com/content/equities/EQUITY_L.csv");
         }
 
         return url;
@@ -37,18 +37,20 @@ public class SecurityLoader extends AbstractLoader implements Loader {
 
     @Override
     public List<Security> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
-        List<Security> securities=new ArrayList<Security>();
-        File file=new File(fileName);
-        int headerLine=findHeaderGivenFile(file);
-        BufferedReader br=new BufferedReader(new FileReader(file));
-        for (;headerLine>0;headerLine--)
+        List<Security> securities = new ArrayList<Security>();
+        File file = new File(fileName);
+        int headerLine = findHeaderGivenFile(file);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        for (; headerLine > 0; headerLine--)
             br.readLine();
         br.readLine();//header related stuff here
         String line;
-        while((line=br.readLine())!=null){
-            String[] lineArr=line.split(",");
-            SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
-            securities.add(new Security(lineArr[0],lineArr[1],lineArr[2],fmt.parse(lineArr[3]),lineArr[6]));
+        while ((line = br.readLine()) != null) {
+            String[] lineArr = line.split(",");
+            SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
+            Security security = new Security(lineArr[0], lineArr[1], lineArr[2], fmt.parse(lineArr[3]), lineArr[6]);
+            if (!securities.contains(security))
+                securities.add(security);
         }
         return securities;
     }

@@ -17,4 +17,5 @@ public class SecurityJpaDao extends AbstractJpaDAO<Security> {
     public SecurityJpaDao() {
         setClazz(Security.class);
     }
+
 }

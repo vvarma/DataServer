@@ -15,9 +15,12 @@ import java.util.List;
 @Entity
 public class Indice implements Serializable {
     @Id
-    final String indexName;
+    String indexName;
     @ManyToMany(mappedBy = "indiceList",cascade = CascadeType.PERSIST)
-    final List<Security> securities;
+    List<Security> securities;
+
+    public Indice() {
+    }
 
     public Indice(String indexName) {
         this.indexName = indexName;

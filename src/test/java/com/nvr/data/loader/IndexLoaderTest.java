@@ -21,6 +21,8 @@ import java.util.Map;
 /**
  * Created with IntelliJ IDEA.
  * User: vvarma
+            try {
+                URL url = loader2.generateUrlGivenParamMap(paramMap
  * Date: 9/10/13
  * Time: 9:08 PM
  * To change this template use File | Settings | File Templates.
@@ -36,6 +38,7 @@ public class IndexLoaderTest {
 
     @Test
     public void shouldGenerateUrlAndTestConnection(){
+
         Map<String,String> paramMap=new HashMap<String, String>();
         paramMap.put("exchange","nse");
         try {

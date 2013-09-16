@@ -19,7 +19,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Repository
-@Transactional(propagation = Propagation.REQUIRED)
+@Transactional(propagation = Propagation.MANDATORY)
 public @interface AppRepository {
     String value() default "";
 }
