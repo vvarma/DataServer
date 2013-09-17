@@ -1,6 +1,7 @@
 package com.nvr.data.controller;
 
 import com.nvr.data.controller.annotation.AppController;
+import com.nvr.data.domain.Security;
 import com.nvr.data.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,9 +28,9 @@ public class SecurityController {
     SecurityService securityService;
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<String> getAllSecurity() throws IOException, ParseException {
-        System.out.println(securityService.getAllSecurities().size());
-        return new ResponseEntity<String>("works", HttpStatus.OK);
+    public ResponseEntity<List<Security>> getAllSecurity() throws IOException, ParseException {
+        List<Security> securities= securityService.getAllSecurities();
+        return new ResponseEntity<List<Security>>(securities, HttpStatus.OK);
     }
 
 }

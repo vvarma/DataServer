@@ -20,7 +20,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Controller
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional
 public @interface AppController {
     String value() default "";
 }

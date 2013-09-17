@@ -2,6 +2,7 @@ package com.nvr.data.controller;
 
 import com.nvr.data.controller.annotation.AppController;
 import com.nvr.data.domain.Indice;
+import com.nvr.data.domain.Security;
 import com.nvr.data.service.IndexService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,8 +33,9 @@ public class IndexController {
 
     @RequestMapping(value = "/{indexName}")
     @ResponseBody
-    public ResponseEntity<String> getAllSecurityGivenIndex(@PathVariable(value = "indexName") String indexName){
-        return  new ResponseEntity<String>("works",HttpStatus.OK);
+    public ResponseEntity<List<Security>> getAllSecurityGivenIndex(@PathVariable(value = "indexName") String indexName){
+        List<Security> securities=indexService.getAllSecurity(indexName);
+        return  new ResponseEntity<List<Security>>(securities,HttpStatus.OK);
     }
 
 }

@@ -15,5 +15,5 @@ import java.util.List;
 
 public interface IndexService {
     public List<Indice> getAllIndice();
-    public List<Security> getAllSecurity(Indice indice);
+    public List<Security> getAllSecurity(String indice);
 }
