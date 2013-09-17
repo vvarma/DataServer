@@ -25,7 +25,7 @@ public class TestindexService {
     IndexService indexService;
     @Test
     public void shouldGetAllIndice(){
-        indexService.loadIndice();
-        Assert.assertTrue(indexService.getAllIndice().size()>0);
+       Assert.assertTrue(indexService.getAllIndice().size()>0);
     }
+
 }

@@ -4,10 +4,13 @@ import com.nvr.data.domain.Security;
 import com.nvr.data.loader.Loader;
 import com.nvr.data.repository.SecurityJpaDao;
 import com.nvr.data.service.annotation.AppService;
+import com.nvr.data.service.annotation.PostInitialize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +30,7 @@ import java.util.Map;
  * Time: 5:14 AM
  * To change this template use File | Settings | File Templates.
  */
-@AppService
+@Service
 public class SecurityServiceImpl implements SecurityService {
     @Autowired
     @Qualifier("securityLoader")
@@ -37,8 +40,8 @@ public class SecurityServiceImpl implements SecurityService {
     final static Logger LOGGER= LoggerFactory.getLogger(SecurityService.class);
 
     @Override
-    @Transactional
-    public void loadSecurities(){
+    @PostInitialize(order = 1)
+     public void loadSecurities(){
         LOGGER.debug("Loading security");
         Map<String, String> paramMap = new HashMap<String, String>();
         paramMap.put("exchange", "nse");

@@ -1,5 +1,7 @@
 package com.nvr.data.domain;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
  * Time: 6:52 PM
  * To change this template use File | Settings | File Templates.
  */
+
 @Entity
 public class Indice implements Serializable {
     @Id

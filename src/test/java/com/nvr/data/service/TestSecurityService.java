@@ -27,11 +27,13 @@ import java.util.List;
 public class TestSecurityService {
     @Autowired
     SecurityService securityService;
+
     @Test
     public void shouldLoadAllSecurity() throws IOException, ParseException {
-        securityService.loadSecurities();
+        /*securityService.loadSecurities();*/
         List<Security> securityList=securityService.getAllSecurities();
         System.out.println(securityList.size());
         Assert.assertTrue(securityList.size()>0);
     }
+
 }

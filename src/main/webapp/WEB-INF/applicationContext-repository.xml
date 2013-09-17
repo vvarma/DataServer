@@ -25,8 +25,12 @@ http://www.springframework.org/schema/context/spring-context.xsd">
                 <property name="showSql" value="${hibernate.show_sql}"/>
                 <property name="generateDdl" value="${jpa.generateDdl}"/>
                 <property name="databasePlatform" value="${persistence.dialect}"/>
-
             </bean>
+        </property>
+        <property name="jpaProperties">
+            <map>
+                <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
+            </map>
         </property>
     </bean>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">

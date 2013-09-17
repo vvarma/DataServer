@@ -7,6 +7,8 @@ import java.util.List;
 
 import com.nvr.data.domain.Security;
 import com.nvr.data.service.annotation.AppService;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created with IntelliJ IDEA.

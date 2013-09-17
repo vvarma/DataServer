@@ -11,7 +11,7 @@
         <java.version>1.7</java.version>
         <maven.enforcer.plugin>1.0.1</maven.enforcer.plugin>
         <maven.version.range>[2.2.1,3.1.0)</maven.version.range>
-        <logback.version>1.0.13</logback.version>
+        <logback.version>1.0.10</logback.version>
         <slf4j.version>1.7.5</slf4j.version>
         <junit.version>4.11</junit.version>
         <maven.tomcat.plugin>2.0-beta-1</maven.tomcat.plugin>
@@ -182,8 +182,33 @@
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>DataServer</finalName>
+        <finalName>${artifactId}-${version}</finalName>
+        <directory>target</directory>
+        <outputDirectory>target/classes</outputDirectory>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <plugins>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+
             <!--Prohibit the direct or indirect inclusion of incompatible and/or legacy jars-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
