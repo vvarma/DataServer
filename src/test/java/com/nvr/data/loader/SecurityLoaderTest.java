@@ -37,7 +37,7 @@ public class SecurityLoaderTest {
     @Test
     public void shouldGenerateUrlGivenExchangeAndIndexName(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
         paramMap.put("index","nifty");
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);
@@ -53,7 +53,7 @@ public class SecurityLoaderTest {
     @Test
     public void shouldDownloadFileGivenUrl(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);
             Assert.assertNotNull(url);
@@ -68,7 +68,7 @@ public class SecurityLoaderTest {
     @Test
     public void shouldParseFileAndLoadSecurities(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
         String fileName;
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);

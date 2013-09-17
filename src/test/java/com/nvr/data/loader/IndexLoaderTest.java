@@ -40,7 +40,7 @@ public class IndexLoaderTest {
     public void shouldGenerateUrlAndTestConnection(){
 
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
         try {
         URL url= loader.generateUrlGivenParamMap(paramMap);
         Assert.assertNotNull(url);
@@ -55,7 +55,7 @@ public class IndexLoaderTest {
     @Test
     public void shoudlDownloadFileGivenUrl(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
         try {
             URL url= loader.generateUrlGivenParamMap(paramMap);
             Assert.assertNotNull(url);
@@ -70,7 +70,7 @@ public class IndexLoaderTest {
     @Test
     public void shouldParseFileAndGetIndices(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
         String fileName;
         try {
             URL url= loader.generateUrlGivenParamMap(paramMap);

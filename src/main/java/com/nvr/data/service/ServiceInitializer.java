@@ -48,12 +48,16 @@ public class ServiceInitializer {
         List<Indice> indices = loadIndice();
         loadSecurityIndex(securities,indices);
 
+        for (Security s:securities){
+            securityJpaDao.save(s);
+        }
+
     }
 
     private List<Security> loadSecurity() {
         LOGGER.debug("Loading security");
         Map<String, String> paramMap = new HashMap<String, String>();
-        paramMap.put("exchange", "nse");
+        paramMap.put("seedUrl", "http://nseindia.com/content/equities/EQUITY_L.csv");
         String fileName;
         List<Security> securities = null;
         try {
@@ -83,7 +87,7 @@ public class ServiceInitializer {
     public List<Indice> loadIndice() {
         LOGGER.info("Initializing Indices");
         Map<String, String> paramMap = new HashMap<String, String>();
-        paramMap.put("exchange", "nse");
+        paramMap.put("seedUrl", "http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
         String fileName;
         List<Indice> indices = null;
         try {
@@ -139,9 +143,10 @@ public class ServiceInitializer {
             } catch (IOException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-            for (Security s:securities){
-                securityJpaDao.save(s);
-            }
+
         }
+    }
+    private void loadSecurityPrices(){
+
     }
 }

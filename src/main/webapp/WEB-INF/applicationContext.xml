@@ -28,5 +28,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="indexLoader" class="com.nvr.data.loader.IndexLoader" parent="loader"/>
     <bean id="securityLoader" class="com.nvr.data.loader.SecurityLoader" parent="loader"/>
     <bean id="securityIndexLoader" class="com.nvr.data.loader.SecurityIndexLoader" parent="loader"/>
+    <bean id="priceLoader" class="com.nvr.data.loader.PriceLoader" parent="loader"/>
     <bean id="loader" class="com.nvr.data.loader.Loader" abstract="true"/>
 </beans>

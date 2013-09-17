@@ -27,11 +27,10 @@ public class SecurityLoader extends AbstractLoader implements Loader {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url = null;
-        String exchange = paramMap.get("exchange");
-        if (exchange != null) {
-            url = new URL("http://nseindia.com/content/equities/EQUITY_L.csv");
+        String seedUrl = paramMap.get("seedUrl");
+        if (seedUrl != null) {
+            url = new URL(seedUrl);
         }
-
         return url;
     }
 

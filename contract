@@ -20,7 +20,7 @@ PricedSecurity extends Security
 -List<Price> priceList
 
 Price
--Double openPrice, closePrice, lowPrice, highPrice, lastClosePrice
+-Double openPrice, closePrice, lowPrice, highPrice, lastTradedPrice
 -Long quantity
 -Date date
 

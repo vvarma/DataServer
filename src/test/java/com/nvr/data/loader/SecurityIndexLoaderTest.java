@@ -47,11 +47,13 @@ public class SecurityIndexLoaderTest {
     @Before
     public void initSecurityListAndIndexList(){
         Map<String,String> paramMap=new HashMap<String, String>();
-        paramMap.put("exchange","nse");
+        paramMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
+
         try {
             URL url=securityLoader.generateUrlGivenParamMap(paramMap);
             String fileName=securityLoader.downloadFileGivenUrl(url,"securities.csv");
             securities=securityLoader.parseFileAndReturnListOfEntity(fileName);
+            paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
             url=indexLoader.generateUrlGivenParamMap(paramMap);
             fileName=indexLoader.downloadFileGivenUrl(url,"indices.csv");
             indices=indexLoader.parseFileAndReturnListOfEntity(fileName);
@@ -68,7 +70,6 @@ public class SecurityIndexLoaderTest {
     public void shouldGenerateUrlGivenIndexName(){
         Map<String,String> paramMap=new HashMap<String, String>();
         for (Indice indice :indices){
-            paramMap.put("exchange","nse");
             paramMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_cnx");
             paramMap.put("indice", indice.getIndexName());
             paramMap.put("tailUrl","list.csv");

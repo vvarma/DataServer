@@ -26,26 +26,25 @@ import java.util.Map;
 public class IndexLoader extends AbstractLoader implements Loader {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
-        URL url=null;
-        String exchange=paramMap.get("exchange");
-        if (exchange!=null){
-            url=new URL("http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
-        }
+        URL url = null;
+        String seedUrl = paramMap.get("seedUrl");
+        if (seedUrl != null)
+            url = new URL(seedUrl);
         return url;
     }
 
     @Override
-    public  List<Indice> parseFileAndReturnListOfEntity(String fileName) throws IOException {
-        List<Indice> indices=new ArrayList<Indice>();
-        File file=new File(fileName);
-        int headerLine=findHeaderGivenFile(file);
-        BufferedReader br=new BufferedReader(new FileReader(file));
-        for (;headerLine>0;headerLine--)
+    public List<Indice> parseFileAndReturnListOfEntity(String fileName) throws IOException {
+        List<Indice> indices = new ArrayList<Indice>();
+        File file = new File(fileName);
+        int headerLine = findHeaderGivenFile(file);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        for (; headerLine > 0; headerLine--)
             br.readLine();
         br.readLine();//do header related stuff here
         String line;
-        while ((line=br.readLine())!=null){
-            String[] lineArr=line.split(",");
+        while ((line = br.readLine()) != null) {
+            String[] lineArr = line.split(",");
             indices.add(new Indice(lineArr[0]));
         }
         return indices;
