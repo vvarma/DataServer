@@ -7,12 +7,13 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
     <import resource="applicationContext-repository.xml"/>
+    <import resource="applicationContext-controller.xml"/>
     <import resource="applicationContext-service.xml"/>
 
     <!--using property place holder-->
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location">
-            <value>classpath:META-INF\spring\database.properties</value>
+            <value>classpath:spring\test.properties</value>
         </property>
     </bean>
     <!--component scan-->

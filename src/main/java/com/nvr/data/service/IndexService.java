@@ -12,9 +12,8 @@ import java.util.List;
  * Time: 4:26 AM
  * To change this template use File | Settings | File Templates.
  */
-@AppService
+
 public interface IndexService {
-    public void loadIndice();
     public List<Indice> getAllIndice();
     public List<Security> getAllSecurity(Indice indice);
 }

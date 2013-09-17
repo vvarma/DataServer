@@ -1,5 +1,6 @@
 package com.nvr.data.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Indice implements Serializable {
     @Id
     String indexName;
     @ManyToMany(mappedBy = "indiceList",cascade = CascadeType.PERSIST)
+    @JsonIgnore
     List<Security> securities;
 
     public Indice() {

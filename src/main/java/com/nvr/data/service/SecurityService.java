@@ -19,6 +19,5 @@ import org.springframework.transaction.annotation.Transactional;
  */
 
 public interface SecurityService {
-    public void loadSecurities() ;
     public List<Security> getAllSecurities();
 }

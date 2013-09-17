@@ -1,5 +1,7 @@
 package com.nvr.data.domain;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class Security implements Serializable {
     String isinNumber;
     @ManyToMany(cascade = CascadeType.PERSIST)
     /*@JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security"),@JoinColumn(name = "series")})*/
+    @JsonIgnore
     List<Indice> indiceList;
 
     public Security() {
@@ -78,7 +81,7 @@ public class Security implements Serializable {
     }
 
     public Security(String symbol, String series, String isinNumber) {
-        this(symbol,null,series,null,isinNumber);
+        this(symbol,"",series,new Date(),isinNumber);
     }
 
     @Override

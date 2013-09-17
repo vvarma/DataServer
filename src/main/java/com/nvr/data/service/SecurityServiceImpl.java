@@ -30,7 +30,7 @@ import java.util.Map;
  * Time: 5:14 AM
  * To change this template use File | Settings | File Templates.
  */
-@Service
+@AppService
 public class SecurityServiceImpl implements SecurityService {
     @Autowired
     @Qualifier("securityLoader")
@@ -39,37 +39,6 @@ public class SecurityServiceImpl implements SecurityService {
     SecurityJpaDao securityJpaDao;
     final static Logger LOGGER= LoggerFactory.getLogger(SecurityService.class);
 
-    @Override
-    @PostInitialize(order = 1)
-     public void loadSecurities(){
-        LOGGER.debug("Loading security");
-        Map<String, String> paramMap = new HashMap<String, String>();
-        paramMap.put("exchange", "nse");
-        String fileName;
-        try{
-            URL url = loader.generateUrlGivenParamMap(paramMap);
-            LOGGER.debug("Generated Url " + url.getPath());
-            if (url != null) {
-                fileName = loader.downloadFileGivenUrl(url, "securities.csv");
-                LOGGER.debug("filed downloaded @ "+fileName);
-                List<Security> securities = loader.parseFileAndReturnListOfEntity(fileName);
-                LOGGER.debug("securities found " + securities.size());
-                for (Security security:securities){
-                    securityJpaDao.save(security);
-                }
-
-        }
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (ParseException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        LOGGER.debug("Security Service done");
-    }
 
     @Override
     public List<Security> getAllSecurities() {

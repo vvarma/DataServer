@@ -21,7 +21,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContext.xml"})
+@ContextConfiguration(locations = {"file:src/test/resources/testContext.xml"})
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class TestSecurityService {

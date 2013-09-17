@@ -21,6 +21,7 @@
         <mysql.version>5.1.24</mysql.version>
         <entitymanager.version>4.2.5.Final</entitymanager.version>
         <servlet.version>3.1.0</servlet.version>
+        <jackson.version>1.9.12</jackson.version>
     </properties>
 
     <dependencies>
@@ -88,6 +89,10 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
         </dependency>
     </dependencies>
     <!--to manage transitive dependencies-->
@@ -178,6 +183,11 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
                 <version>${servlet.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
