@@ -1,6 +1,8 @@
 package com.nvr.data.service;
 
 import com.nvr.data.domain.Indice;
+import com.nvr.data.domain.Price;
+import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
 import com.nvr.data.loader.Loader;
 import com.nvr.data.repository.IndexDao;
@@ -16,9 +18,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,17 +39,20 @@ public class ServiceInitializer {
     @Qualifier(value = "indexLoader")
     Loader indexLoader;
     @Autowired
-    @Qualifier("securityIndexLoader")
+    @Qualifier(value = "securityIndexLoader")
     Loader securityIndexLoader;
     final static Logger LOGGER = LoggerFactory.getLogger(SecurityService.class);
+    @Autowired
+    @Qualifier(value = "priceLoader")
+    Loader priceLoader;
 
     @PostInitialize
     public void initServices() {
         List<Security>securities=loadSecurity();
         List<Indice> indices = loadIndice();
         loadSecurityIndex(securities,indices);
-
-        for (Security s:securities){
+        Set<PricedSecurity>securitySet=loadSecurityPrices(securities,indices);
+        for (Security s:securitySet){
             securityJpaDao.save(s);
         }
 
@@ -146,7 +150,38 @@ public class ServiceInitializer {
 
         }
     }
-    private void loadSecurityPrices(){
+    private Set<PricedSecurity> loadSecurityPrices(List<Security> securities, List<Indice> indices){
+        Set<PricedSecurity> tempSecurities=new HashSet<PricedSecurity>();
+        for (Indice indice:indices){
+            for (Security security:indice.getSecurities()){
+                tempSecurities.add(new PricedSecurity(security));
+            }
+        }
+        LOGGER.debug("Set of securites from indices "+tempSecurities);
+        for (PricedSecurity security:tempSecurities){
+            String symbolName=security.getSymbol();
+            SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
+            String fromDate=fmt.format(security.getListing());
+            String toDate=fmt.format(new Date());
+            Map<String,String> paramMap=new HashMap<String, String>();
+            paramMap.put("seedUrl","http://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/getHistoricalData.jsp?");
+            paramMap.put("symbol",symbolName);
+            paramMap.put("fromDate",fromDate);
+            paramMap.put("toDate",toDate);
 
+            try {
+                URL url=priceLoader.generateUrlGivenParamMap(paramMap);
+                String fileName=priceLoader.downloadFileGivenUrl(url,symbolName+".csv");
+                List<Price> prices=priceLoader.parseFileAndReturnListOfEntity(fileName);
+                security.setPrices(prices);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (IOException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (ParseException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        }
+        return tempSecurities;
     }
 }

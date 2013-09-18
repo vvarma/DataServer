@@ -32,7 +32,14 @@ public class Security implements Serializable {
 
     public Security() {
     }
-
+    public Security(Security security){
+        this.symbol=security.symbol;
+        this.company=security.company;
+        this.series=security.series;
+        this.listing=security.listing;
+        this.isinNumber=security.isinNumber;
+        this.indiceList=security.indiceList;
+    }
     public Security(String symbol, String company, String series, Date listing, String isinNumber) {
         this.symbol = symbol;
         this.company = company;

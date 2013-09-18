@@ -17,12 +17,17 @@ public class PricedSecurity extends Security {
     @ElementCollection(targetClass = Price.class)
     List<Price> prices;
 
-    public void addPrice(Price price){
-        prices.add(price);
+    public PricedSecurity(Security security) {
+        super(security);
+        prices=new ArrayList<Price>();
     }
 
     public PricedSecurity() {
         prices=new ArrayList<Price>();
+    }
+
+    public void addPrice(Price price){
+        prices.add(price);
     }
 
     public List<Price> getPrices() {

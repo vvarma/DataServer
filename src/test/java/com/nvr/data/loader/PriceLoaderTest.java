@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,8 +61,8 @@ public class PriceLoaderTest {
         try {
             URL url=loader.generateUrlGivenParamMap(paramMap);
             String fileName=loader.downloadFileGivenUrl(url,"CIPLA.csv");
-            System.out.println(fileName);
-            Assert.assertNotNull(url);
+            File file=new File(fileName);
+            Assert.assertTrue(file.exists());
         } catch (MalformedURLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
@@ -79,8 +80,7 @@ public class PriceLoaderTest {
             URL url=loader.generateUrlGivenParamMap(paramMap);
             String fileName=loader.downloadFileGivenUrl(url,"CIPLA.csv");
             List<Price> prices=loader.parseFileAndReturnListOfEntity(fileName);
-            System.out.println(prices);
-            Assert.assertNotNull(url);
+            Assert.assertTrue(prices.size()>0);
         } catch (MalformedURLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (IOException e) {
