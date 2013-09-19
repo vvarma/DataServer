@@ -23,7 +23,7 @@ import java.util.Map;
  */
 
 @Qualifier(value = "IndexLoader")
-public class IndexLoader extends AbstractLoader implements Loader {
+public class IndexLoader extends AbstractLoader<Indice>  {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url = null;

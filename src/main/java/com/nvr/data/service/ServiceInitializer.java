@@ -33,6 +33,8 @@ public class ServiceInitializer {
     @Autowired
     SecurityJpaDao securityJpaDao;
     @Autowired
+    IndexDao indexDao;
+    @Autowired
     @Qualifier(value = "securityLoader")
     Loader securityLoader;
     @Autowired
@@ -46,15 +48,15 @@ public class ServiceInitializer {
     @Qualifier(value = "priceLoader")
     Loader priceLoader;
 
-    @PostInitialize
+    /*@PostInitialize*/
     public void initServices() {
         List<Security>securities=loadSecurity();
         List<Indice> indices = loadIndice();
-        loadSecurityIndex(securities,indices);
-        Set<PricedSecurity>securitySet=loadSecurityPrices(securities,indices);
-        for (Security s:securitySet){
+        loadSecurityIndex();
+        /*Set<PricedSecurity>securitySet=loadSecurityPrices();
+        *//*for (Security s:securitySet){
             securityJpaDao.save(s);
-        }
+        }*/
 
     }
 
@@ -85,6 +87,9 @@ public class ServiceInitializer {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         LOGGER.debug("Security Service done");
+        for (Security s:securities){
+            securityJpaDao.save(new PricedSecurity(s));
+        }
         return securities;
     }
 
@@ -107,11 +112,15 @@ public class ServiceInitializer {
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-
+        for (Indice i:indices){
+            indexDao.save(i);
+        }
         return indices;
     }
 
-    private void loadSecurityIndex(List<Security> securities, List<Indice> indices) {
+    private void loadSecurityIndex() {
+        List<PricedSecurity> securities=securityJpaDao.findAll();
+        List<Indice> indices=indexDao.findAll();
         LOGGER.info("Initializing securities in indices");
         Map<String, String> paramMap = new HashMap<String, String>();
         if (securities==null||indices==null){
@@ -147,41 +156,8 @@ public class ServiceInitializer {
             } catch (IOException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
-
+            indexDao.update(indice);
         }
     }
-    private Set<PricedSecurity> loadSecurityPrices(List<Security> securities, List<Indice> indices){
-        Set<PricedSecurity> tempSecurities=new HashSet<PricedSecurity>();
-        for (Indice indice:indices){
-            for (Security security:indice.getSecurities()){
-                tempSecurities.add(new PricedSecurity(security));
-            }
-        }
-        LOGGER.debug("Set of securites from indices "+tempSecurities);
-        for (PricedSecurity security:tempSecurities){
-            String symbolName=security.getSymbol();
-            SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
-            String fromDate=fmt.format(security.getListing());
-            String toDate=fmt.format(new Date());
-            Map<String,String> paramMap=new HashMap<String, String>();
-            paramMap.put("seedUrl","http://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/getHistoricalData.jsp?");
-            paramMap.put("symbol",symbolName);
-            paramMap.put("fromDate",fromDate);
-            paramMap.put("toDate",toDate);
 
-            try {
-                URL url=priceLoader.generateUrlGivenParamMap(paramMap);
-                String fileName=priceLoader.downloadFileGivenUrl(url,symbolName+".csv");
-                List<Price> prices=priceLoader.parseFileAndReturnListOfEntity(fileName);
-                security.setPrices(prices);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (IOException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            } catch (ParseException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-            }
-        }
-        return tempSecurities;
-    }
 }

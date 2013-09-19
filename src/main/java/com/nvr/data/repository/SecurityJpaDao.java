@@ -1,8 +1,7 @@
 package com.nvr.data.repository;
 
-import com.nvr.data.domain.Security;
+import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.repository.annotation.AppRepository;
-import org.springframework.stereotype.Repository;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,9 +12,9 @@ import org.springframework.stereotype.Repository;
  */
 
 @AppRepository
-public class SecurityJpaDao extends AbstractJpaDAO<Security> {
+public class SecurityJpaDao extends AbstractJpaDAO<PricedSecurity> {
     public SecurityJpaDao() {
-        setClazz(Security.class);
+        setClazz(PricedSecurity.class);
     }
 
 }

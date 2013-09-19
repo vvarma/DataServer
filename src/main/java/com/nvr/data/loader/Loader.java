@@ -18,8 +18,8 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 
-public interface Loader {
+public interface Loader<T> {
     URL generateUrlGivenParamMap(Map<String,String> paramMap) throws MalformedURLException;
     String downloadFileGivenUrl(URL url, String fileName) throws IOException;
-    <T> List<T> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException;
+    List<T> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException;
 }

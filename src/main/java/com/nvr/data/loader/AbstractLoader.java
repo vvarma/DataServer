@@ -10,7 +10,7 @@ import java.net.URL;
  * Time: 9:54 PM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class AbstractLoader implements Loader{
+public abstract class AbstractLoader<T> implements Loader<T>{
     @Override
     public String downloadFileGivenUrl(URL url, String fileName) throws IOException {
 

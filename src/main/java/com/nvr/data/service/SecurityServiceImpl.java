@@ -1,5 +1,8 @@
 package com.nvr.data.service;
 
+import com.nvr.data.domain.Indice;
+import com.nvr.data.domain.Price;
+import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
 import com.nvr.data.loader.Loader;
 import com.nvr.data.repository.SecurityJpaDao;
@@ -19,9 +22,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.ParseException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -42,6 +44,12 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public List<Security> getAllSecurities() {
-        return securityJpaDao.findAll();
+        List<PricedSecurity> pricedSecurities=securityJpaDao.findAll();
+        List<Security> securities=new ArrayList<Security>();
+        for (PricedSecurity pricedSecurity:pricedSecurities){
+            securities.add(pricedSecurity);
+        }
+        return  securities;
     }
+
 }

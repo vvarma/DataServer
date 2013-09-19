@@ -18,7 +18,7 @@ public class PricedSecurity extends Security {
     List<Price> prices;
 
     public PricedSecurity(Security security) {
-        super(security);
+        super(security.symbol,security.company,security.series,security.listing,security.isinNumber);
         prices=new ArrayList<Price>();
     }
 

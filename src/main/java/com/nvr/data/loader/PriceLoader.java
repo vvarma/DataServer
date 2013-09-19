@@ -21,7 +21,7 @@ import java.util.Map;
  * Time: 2:55 AM
  * To change this template use File | Settings | File Templates.
  */
-public class PriceLoader extends AbstractLoader implements Loader {
+public class PriceLoader extends AbstractLoader<Price> {
 
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {

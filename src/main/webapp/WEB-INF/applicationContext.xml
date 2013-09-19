@@ -30,4 +30,10 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="securityIndexLoader" class="com.nvr.data.loader.SecurityIndexLoader" parent="loader"/>
     <bean id="priceLoader" class="com.nvr.data.loader.PriceLoader" parent="loader"/>
     <bean id="loader" class="com.nvr.data.loader.Loader" abstract="true"/>
+
+    <bean id="threadPoolExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor" >
+        <property name="corePoolSize" value="1"/>
+        <property name="maxPoolSize" value="15"/>
+        <property name="keepAliveSeconds" value="30"/>
+    </bean>
 </beans>

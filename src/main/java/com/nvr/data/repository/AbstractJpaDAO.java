@@ -49,4 +49,8 @@ public abstract class AbstractJpaDAO<T extends Serializable> implements JpaDao<T
         T entity = this.findOne(entityId);
         this.delete(entity);
     }
+
+    public Class<T> getClazz() {
+        return clazz;
+    }
 }

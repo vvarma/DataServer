@@ -16,15 +16,14 @@ import java.util.Map;
 /**
  * Created with IntelliJ IDEA.
  * User: vvarm1
- * Date: 9/12/13
- * Time: 5:35 PM
+ * Date: 9/19/13
+ * Time: 5:08 AM
  * To change this template use File | Settings | File Templates.
  */
-public class SecurityIndexLoader extends AbstractLoader<Security>  {
+public class ThreadedSecurityIndexLoader extends ThreadedLoader<Security> {
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url=null;
-        String exchange=paramMap.get("exchange");
         String seedUrl=paramMap.get("seedUrl");
         String indexName=paramMap.get("indice");
         indexName=indexName.replace(" ", "");
