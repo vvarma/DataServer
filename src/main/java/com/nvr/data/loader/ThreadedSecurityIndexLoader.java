@@ -1,5 +1,7 @@
 package com.nvr.data.loader;
 
+import com.nvr.data.domain.Indice;
+import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
 
 import java.io.BufferedReader;
@@ -12,6 +14,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,6 +24,16 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 public class ThreadedSecurityIndexLoader extends ThreadedLoader<Security> {
+    public ThreadedSecurityIndexLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch) {
+        super(paramMap, fileName, latch);
+    }
+
+    Indice indice;
+    private List<PricedSecurity> securities;
+
+    public void setIndice(Indice indice){
+        this.indice=indice;
+    }
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url=null;
@@ -47,6 +60,16 @@ public class ThreadedSecurityIndexLoader extends ThreadedLoader<Security> {
             String[] lineArr=line.split(",");
             securities.add(new Security(lineArr[2],lineArr[3],lineArr[4]));
         }
+        int index;
+        for (Security s:securities){
+            if ((index=this.securities.indexOf(s))>=0){
+                indice.addSecurity(this.securities.get(index));
+            }
+        }
         return securities;
+    }
+
+    public void setSecurities(List<PricedSecurity> securities) {
+        this.securities = securities;
     }
 }

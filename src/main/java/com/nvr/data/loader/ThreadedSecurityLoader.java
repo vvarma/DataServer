@@ -1,5 +1,6 @@
 package com.nvr.data.loader;
 
+import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,8 +24,12 @@ import java.util.Map;
  * Time: 9:39 PM
  * To change this template use File | Settings | File Templates.
  */
-@Component
-public class ThreadedSecurityLoader extends ThreadedLoader<Security>  {
+
+public class ThreadedSecurityLoader extends ThreadedLoader<PricedSecurity>  {
+    public ThreadedSecurityLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch) {
+        super(paramMap, fileName, latch);
+    }
+
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url = null;
@@ -35,8 +41,8 @@ public class ThreadedSecurityLoader extends ThreadedLoader<Security>  {
     }
 
     @Override
-    public List<Security> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
-        List<Security> securities = new ArrayList<Security>();
+    public List<PricedSecurity> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
+        List<PricedSecurity> securities = new ArrayList<PricedSecurity>();
         File file = new File(fileName);
         int headerLine = findHeaderGivenFile(file);
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -49,7 +55,7 @@ public class ThreadedSecurityLoader extends ThreadedLoader<Security>  {
             SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
             Security security = new Security(lineArr[0], lineArr[1], lineArr[2], fmt.parse(lineArr[3]), lineArr[6]);
             if (!securities.contains(security))
-                securities.add(security);
+                securities.add(new PricedSecurity(security));
         }
         return securities;
     }

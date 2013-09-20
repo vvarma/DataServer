@@ -17,6 +17,10 @@ public abstract class AbstractLoader<T> implements Loader<T>{
         url.openConnection();
         InputStream reader = url.openStream();
         String path=System.getProperty("java.io.tmpdir")+"/"+fileName;
+        File file=new File(fileName);
+        if (file.exists()){
+            return path;
+        }
         FileOutputStream writer = new FileOutputStream(path);
         byte[] buffer = new byte[153600];
         int totalBytesRead = 0;

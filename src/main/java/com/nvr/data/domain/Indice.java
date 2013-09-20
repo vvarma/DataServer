@@ -20,7 +20,7 @@ import java.util.List;
 public class Indice implements Serializable {
     @Id
     String indexName;
-    @ManyToMany(mappedBy = "indiceList",cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "indiceList",cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
     @JsonIgnore
     List<Security> securities;
 

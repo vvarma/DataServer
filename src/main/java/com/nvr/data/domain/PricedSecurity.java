@@ -19,6 +19,7 @@ public class PricedSecurity extends Security {
 
     public PricedSecurity(Security security) {
         super(security.symbol,security.company,security.series,security.listing,security.isinNumber);
+        getIndiceList().addAll(security.getIndiceList());
         prices=new ArrayList<Price>();
     }
 

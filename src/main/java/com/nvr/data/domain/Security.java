@@ -26,7 +26,7 @@ public class Security implements Serializable {
     String series;
     Date listing;
     String isinNumber;
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
     /*@JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security"),@JoinColumn(name = "series")})*/
     @JsonIgnore
     List<Indice> indiceList;
@@ -73,11 +73,7 @@ public class Security implements Serializable {
     @Override
     public String toString() {
         return "Security{" +
-                "symbol='" + symbol + '\'' +
-                ", company='" + company + '\'' +
-                ", series='" + series + '\'' +
-                ", listing=" + listing +
-                ", isinNumber='" + isinNumber + '\'' +
+                "symbol='" + symbol  +
                 '}';
     }
 

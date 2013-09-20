@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,8 +23,12 @@ import java.util.Map;
  * To change this template use File | Settings | File Templates.
  */
 
-@Component
+
 public class ThreadedIndexLoader extends ThreadedLoader<Indice> {
+    public ThreadedIndexLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch) {
+        super(paramMap, fileName, latch);
+    }
+
     @Override
     public URL generateUrlGivenParamMap(Map<String, String> paramMap) throws MalformedURLException {
         URL url = null;
