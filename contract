@@ -17,7 +17,7 @@ Security
 ?Price currentPrice
 
 PricedSecurity extends Security
--List<Price> priceList
+-List<Price> prices
 
 Price
 -Double openPrice, closePrice, lowPrice, highPrice, lastTradedPrice

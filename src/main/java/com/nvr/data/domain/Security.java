@@ -17,7 +17,6 @@ import java.util.List;
  */
 @Entity
 @IdClass(SecurityId.class)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Security implements Serializable {
     @Id
     String symbol;
@@ -27,11 +26,18 @@ public class Security implements Serializable {
     Date listing;
     String isinNumber;
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
-    /*@JoinTable(name = "indexSecurity",joinColumns = {@JoinColumn(name = "indice")},inverseJoinColumns ={@JoinColumn(name = "security"),@JoinColumn(name = "series")})*/
     @JsonIgnore
     List<Indice> indiceList;
 
+    @OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
+    @JsonIgnore
+    List<Price> prices;
+
+    boolean priced=false;
+
     public Security() {
+        indiceList=new ArrayList<Indice>();
+        prices =new ArrayList<Price>();
     }
 
     public Security(String symbol, String company, String series, Date listing, String isinNumber) {
@@ -41,11 +47,35 @@ public class Security implements Serializable {
         this.listing = listing;
         this.isinNumber = isinNumber;
         indiceList =new ArrayList<Indice>();
+        prices =new ArrayList<Price>();
     }
 
     public void addIndex(Indice indice){
         indiceList.add(indice);
     }
+
+    public void addPrice(Price price){
+        prices.add(price);
+        priced=true;
+    }
+
+    public List<Price> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<Price> prices) {
+        this.prices = prices;
+        priced=true;
+    }
+
+    public boolean isPriced() {
+        return priced;
+    }
+
+    public void setPriced(boolean priced) {
+        this.priced = priced;
+    }
+
     public List<Indice> getIndiceList() {
         return indiceList;
     }

@@ -1,6 +1,6 @@
 package com.nvr.data.domain;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -10,8 +10,13 @@ import java.util.Date;
  * Time: 2:01 AM
  * To change this template use File | Settings | File Templates.
  */
-@Embeddable
+@Entity
 public class Price {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    int id=0;
+    @ManyToOne
+    Security security;
     Double closePrice,openPrice,lowPrice,highPrice, lastTradedPrice;
     Integer quantity;
     Date priceDate;
@@ -25,6 +30,22 @@ public class Price {
         this.priceDate = priceDate;
     }
     public Price() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Security getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(Security security) {
+        this.security = security;
     }
 
     public Double getClosePrice() {
@@ -89,5 +110,25 @@ public class Price {
                 "priceDate=" + priceDate +
                 ", closePrice=" + closePrice +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Price)) return false;
+
+        Price price = (Price) o;
+
+        if (id != price.id) return false;
+        if (!security.equals(price.security)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + security.hashCode();
+        return result;
     }
 }

@@ -1,29 +1,16 @@
 package com.nvr.data.service;
 
-import com.nvr.data.domain.Indice;
 import com.nvr.data.domain.Price;
-import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
-import com.nvr.data.loader.Loader;
+import com.nvr.data.domain.SecurityId;
 import com.nvr.data.repository.SecurityJpaDao;
 import com.nvr.data.service.annotation.AppService;
-import com.nvr.data.service.annotation.PostInitialize;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,9 +21,7 @@ import java.util.*;
  */
 @AppService
 public class SecurityServiceImpl implements SecurityService {
-    @Autowired
-    @Qualifier("securityLoader")
-    Loader loader;
+
     @Autowired
     SecurityJpaDao securityJpaDao;
     final static Logger LOGGER= LoggerFactory.getLogger(SecurityService.class);
@@ -44,12 +29,38 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public List<Security> getAllSecurities() {
-        List<PricedSecurity> pricedSecurities=securityJpaDao.findAll();
-        List<Security> securities=new ArrayList<Security>();
-        for (PricedSecurity pricedSecurity:pricedSecurities){
-            securities.add(pricedSecurity);
-        }
+        List<Security> securities=securityJpaDao.findAll();
         return  securities;
     }
 
+    @Override
+    public List<Price> getPriceForSecurity(String symbol, Date fromDate, Date toDate) {
+        return securityJpaDao.getSecurityPricesBetween(symbol,"EQ",fromDate,toDate);
+    }
+
+    @Override
+    public List<Security> getAllPricedSecurities() {
+        return securityJpaDao.findByPriced(true);
+    }
+
+    @Override
+    public List<Price> getPriceForSecurity(String symbol, String series, Date fromDate, Date toDate) {
+        return securityJpaDao.getSecurityPricesBetween(symbol,series,fromDate,toDate);
+    }
+
+    @Override
+    public Security getSecurity(String symbol) {
+        SecurityId securityId=new SecurityId();
+        securityId.setSeries("EQ");
+        securityId.setSymbol(symbol);
+        return securityJpaDao.findOne(securityId);
+    }
+
+    @Override
+    public Security getSecurity(String symbol, String series) {
+        SecurityId securityId=new SecurityId();
+        securityId.setSeries(series);
+        securityId.setSymbol(symbol);
+        return securityJpaDao.findOne(securityId);
+    }
 }

@@ -192,7 +192,7 @@
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>${artifactId}-${version}</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
         <directory>target</directory>
         <outputDirectory>target/classes</outputDirectory>
         <sourceDirectory>src/main/java</sourceDirectory>

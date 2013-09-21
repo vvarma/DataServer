@@ -39,7 +39,7 @@ public class PostInitializerRunner implements ApplicationListener {
      * @param event the event type
      */
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
+
     public void onApplicationEvent(ApplicationEvent event) {
         if (event instanceof ContextRefreshedEvent) {
             LOG.info("Scanning for Post Initializers...");
@@ -71,16 +71,21 @@ public class PostInitializerRunner implements ApplicationListener {
                 LOG.debug("Application Context scan completed, took " + NANOSECONDS.toMillis(System.nanoTime() - startTime) + " ms, " + postInitializingMethods.size() + " post initializers found. Invoking now.");
             }
             for (PostInitializingMethod postInitializingMethod : postInitializingMethods) {
-                Method method = postInitializingMethod.getMethod();
-                try {
-                    method.invoke(postInitializingMethod.getBeanInstance());
-                } catch (Throwable e) {
-                    throw new BeanCreationException("Post Initialization of bean " + postInitializingMethod.getBeanName() + " failed.", e);
-                }
+                transactionalStuffHere(postInitializingMethod);
             }
         }
     }
+    @Transactional
+    private void transactionalStuffHere(PostInitializingMethod postInitializingMethod){
+        Method method = postInitializingMethod.getMethod();
+        try {
 
+            method.invoke(postInitializingMethod.getBeanInstance());
+        } catch (Throwable e) {
+            throw new BeanCreationException("Post Initialization of bean " + postInitializingMethod.getBeanName() + " failed.", e);
+        }
+
+    }
     private <T extends Annotation> T getAnnotation(Method method, Class<T> annotationClass) {
         do {
             if (method.isAnnotationPresent(annotationClass)) {

@@ -29,7 +29,6 @@ public class TestIndexDao {
     public void shouldCreateIndex(){
         Indice indice =new Indice("nifty");
         indexDao.save(indice);
-        //Assert.assertTrue(indexDao.findAll().size()>0);
         Assert.assertNotNull(indexDao.findOne("nifty"));
 
     }
@@ -45,6 +44,11 @@ public class TestIndexDao {
         indexDao.save(indice);
         Indice indice1=indexDao.findOne("sifty");
         Indice indice2=indexDao.findOne("nifty");
+        Security security=new Security("Bilbo","EQ","FRODO");
+        indice1.addSecurity(security);
+        indexDao.save(indice1);
+        Indice indice3=indexDao.findOne("sifty");
+        Assert.assertTrue(indice3.getSecurities().contains(security));
         Assert.assertEquals(indice1,indice);
         Assert.assertNull(indice2);
         Assert.assertTrue(indice1.getSecurities().size()>0);

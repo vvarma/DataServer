@@ -1,14 +1,10 @@
 package com.nvr.data.service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.text.ParseException;
-import java.util.List;
-
+import com.nvr.data.domain.Price;
 import com.nvr.data.domain.Security;
-import com.nvr.data.service.annotation.AppService;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,4 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface SecurityService {
     public List<Security> getAllSecurities();
+    public List<Price> getPriceForSecurity(String symbol,Date fromDate, Date toDate);
+    public List<Price> getPriceForSecurity(String symbol,String series,Date fromDate, Date toDate);
+    public List<Security> getAllPricedSecurities();
+    public Security getSecurity(String symbol);
+    public Security getSecurity(String symbol,String series);
+
 }

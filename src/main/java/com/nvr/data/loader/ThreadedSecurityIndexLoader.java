@@ -1,7 +1,6 @@
 package com.nvr.data.loader;
 
 import com.nvr.data.domain.Indice;
-import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
 
 import java.io.BufferedReader;
@@ -29,7 +28,7 @@ public class ThreadedSecurityIndexLoader extends ThreadedLoader<Security> {
     }
 
     Indice indice;
-    private List<PricedSecurity> securities;
+    private List<Security> securities;
 
     public void setIndice(Indice indice){
         this.indice=indice;
@@ -69,7 +68,7 @@ public class ThreadedSecurityIndexLoader extends ThreadedLoader<Security> {
         return securities;
     }
 
-    public void setSecurities(List<PricedSecurity> securities) {
+    public void setSecurities(List<Security> securities) {
         this.securities = securities;
     }
 }

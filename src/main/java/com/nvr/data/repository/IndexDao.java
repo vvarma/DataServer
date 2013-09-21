@@ -2,6 +2,8 @@ package com.nvr.data.repository;
 
 import com.nvr.data.domain.Indice;
 import com.nvr.data.repository.annotation.AppRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,9 +12,7 @@ import com.nvr.data.repository.annotation.AppRepository;
  * Time: 3:50 AM
  * To change this template use File | Settings | File Templates.
  */
-@AppRepository
-public class IndexDao extends AbstractJpaDAO<Indice> {
-    public IndexDao() {
-        setClazz(Indice.class);
-    }
+
+public interface IndexDao extends JpaRepository<Indice,String>{
+
 }

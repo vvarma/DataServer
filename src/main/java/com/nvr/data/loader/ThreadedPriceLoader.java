@@ -1,8 +1,7 @@
 package com.nvr.data.loader;
 
 import com.nvr.data.domain.Price;
-import com.nvr.data.domain.PricedSecurity;
-import org.springframework.stereotype.Component;
+import com.nvr.data.domain.Security;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,8 +25,8 @@ import java.util.concurrent.CountDownLatch;
  */
 
 public class ThreadedPriceLoader extends ThreadedLoader<Price> {
-    PricedSecurity security;
-    public ThreadedPriceLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch, PricedSecurity security) {
+    Security security;
+    public ThreadedPriceLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch, Security security) {
         super(paramMap, fileName, latch);
         this.security=security;
     }

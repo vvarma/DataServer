@@ -64,14 +64,20 @@ public class ThreadedLoaderTest {
     @Test
     public void shouldConcurrentlyProcessIndexAndItsSecurtites(){
         CountDownLatch latch=new CountDownLatch(2);
+        Map<String,String> securityParamMap=new HashMap<String, String>();
+        securityParamMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
+        securityParamMap.put("index","nifty");
+        ThreadedSecurityLoader threadedSecurityLoader=new ThreadedSecurityLoader(securityParamMap,"securities.csv",latch);
         Map<String,String> indexParamMap=new HashMap<String, String>();
         indexParamMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
         ThreadedIndexLoader threadedIndexLoader=new ThreadedIndexLoader(indexParamMap,"indices.csv",latch);
-        Future<List<Indice>>  futureIndices=threadPoolTaskExecutor.submit(threadedIndexLoader);
+        TaskExecutorCompletionService completionService=new TaskExecutorCompletionService(threadPoolTaskExecutor);
+        Future<List<Indice>>  futureIndices=completionService.submit(threadedIndexLoader);
+        Future<List<Security>>  futureSecurites=completionService.submit(threadedSecurityLoader);
         List<Future<List<Security>>> futuresSecurityList=new ArrayList<Future<List<Security>>>();
         try {
             List<Indice> indices=futureIndices.get();
-            TaskExecutorCompletionService completionService=new TaskExecutorCompletionService(threadPoolTaskExecutor);
+            List<Security> securities=futureSecurites.get();
             CountDownLatch latch2=new CountDownLatch(indices.size());
             for (Indice indice:indices){
 
@@ -81,6 +87,8 @@ public class ThreadedLoaderTest {
                 securityIndexParamMap.put("tailUrl", "list.csv");
                 String fileName=indice.getIndexName()+".csv";
                 ThreadedSecurityIndexLoader threadedSecurityIndexLoader=new ThreadedSecurityIndexLoader(securityIndexParamMap,fileName,latch2);
+                threadedSecurityIndexLoader.setSecurities(securities);
+                threadedSecurityIndexLoader.setIndice(indice);
                 futuresSecurityList.add(completionService.submit(threadedSecurityIndexLoader));
             }
             Future<List<Security>>  listFutureSecurities;
@@ -97,16 +105,23 @@ public class ThreadedLoaderTest {
     }
     @Test
     public void shouldConcurrentlyDownloadPriceDataForSecuritiesInIndex(){
+        CountDownLatch latch=new CountDownLatch(2);
+        Map<String,String> securityParamMap=new HashMap<String, String>();
+        securityParamMap.put("seedUrl","http://nseindia.com/content/equities/EQUITY_L.csv");
+        securityParamMap.put("index","nifty");
+        ThreadedSecurityLoader threadedSecurityLoader=new ThreadedSecurityLoader(securityParamMap,"securities.csv",latch);
         Map<String,String> indexParamMap=new HashMap<String, String>();
-        indexParamMap.put("seedUrl", "http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
-        ThreadedIndexLoader threadedIndexLoader=new ThreadedIndexLoader(indexParamMap,"indices.csv",new CountDownLatch(1));
-        Future<List<Indice>>  futureIndices=threadPoolTaskExecutor.submit(threadedIndexLoader);
+        indexParamMap.put("seedUrl","http://www.nseindia.com/content/indices/ind_close_all_19082013.csv");
+        ThreadedIndexLoader threadedIndexLoader=new ThreadedIndexLoader(indexParamMap,"indices.csv",latch);
+        TaskExecutorCompletionService completionService=new TaskExecutorCompletionService(threadPoolTaskExecutor);
+        Future<List<Indice>>  futureIndices=completionService.submit(threadedIndexLoader);
+        Future<List<Security>>  futureSecurites=completionService.submit(threadedSecurityLoader);
         List<Future<List<Security>>> futuresSecurityList=new ArrayList<Future<List<Security>>>();
         SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
         try {
             List<Indice> indices=futureIndices.get();
-            TaskExecutorCompletionService completionService=new TaskExecutorCompletionService(threadPoolTaskExecutor);
-            CountDownLatch latch=new CountDownLatch(indices.size());
+            List<Security> securities=futureSecurites.get();
+            CountDownLatch latch1=new CountDownLatch(indices.size());
             for (Indice indice:indices){
 
                 Map<String,String> securityIndexParamMap=new HashMap<String, String>();
@@ -114,33 +129,28 @@ public class ThreadedLoaderTest {
                 securityIndexParamMap.put("indice", indice.getIndexName());
                 securityIndexParamMap.put("tailUrl", "list.csv");
                 String fileName=indice.getIndexName()+".csv";
-                ThreadedSecurityIndexLoader securityIndexLoader=new ThreadedSecurityIndexLoader(securityIndexParamMap,fileName,latch);
+                ThreadedSecurityIndexLoader securityIndexLoader=new ThreadedSecurityIndexLoader(securityIndexParamMap,fileName,latch1);
                 securityIndexLoader.setIndice(indice);
+                securityIndexLoader.setSecurities(securities);
                 futuresSecurityList.add(completionService.submit(securityIndexLoader));
             }
-            Future<List<Security>>  listFutureSecurities;
-            while(completionService.size()!=0){
-                listFutureSecurities=completionService.take();
-                System.out.println(listFutureSecurities.get());
-            }
+            latch1.await();
             Set<Security> securitySet=new HashSet<Security>();
             for (Indice indice:indices){
                 securitySet.addAll(indice.getSecurities());
             }
             System.out.println("1234" +securitySet);
-            CountDownLatch latch1=new CountDownLatch(securitySet.size());
+            CountDownLatch latch2=new CountDownLatch(securitySet.size());
             for (Security security:securitySet){
                 Map<String,String> pricedParamMap=new HashMap<String, String>();
                 pricedParamMap.put("seedUrl", "http://www.nseindia.com/live_market/dynaContent/live_watch/get_quote/getHistoricalData.jsp?");
                 pricedParamMap.put("symbol", security.getSymbol());
                 pricedParamMap.put("fromDate", fmt.format(security.getListing()));
                 pricedParamMap.put("toDate", fmt.format(new Date()));
-                ThreadedPriceLoader threadedPriceLoader=new ThreadedPriceLoader(pricedParamMap,security.getSymbol()+".csv",latch1, security);
+                ThreadedPriceLoader threadedPriceLoader=new ThreadedPriceLoader(pricedParamMap,security.getSymbol()+".csv",latch2, security);
                 completionService.submit(threadedPriceLoader);
             }
-            while (completionService.size()!=0){
-                System.out.println(completionService.take().get());
-            }
+            latch2.await();
 
         } catch (InterruptedException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

@@ -1,8 +1,6 @@
 package com.nvr.data.loader;
 
-import com.nvr.data.domain.PricedSecurity;
 import com.nvr.data.domain.Security;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,7 +23,7 @@ import java.util.concurrent.CountDownLatch;
  * To change this template use File | Settings | File Templates.
  */
 
-public class ThreadedSecurityLoader extends ThreadedLoader<PricedSecurity>  {
+public class ThreadedSecurityLoader extends ThreadedLoader<Security>  {
     public ThreadedSecurityLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch) {
         super(paramMap, fileName, latch);
     }
@@ -41,8 +39,8 @@ public class ThreadedSecurityLoader extends ThreadedLoader<PricedSecurity>  {
     }
 
     @Override
-    public List<PricedSecurity> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
-        List<PricedSecurity> securities = new ArrayList<PricedSecurity>();
+    public List<Security> parseFileAndReturnListOfEntity(String fileName) throws IOException, ParseException {
+        List<Security> securities = new ArrayList<Security>();
         File file = new File(fileName);
         int headerLine = findHeaderGivenFile(file);
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -55,7 +53,7 @@ public class ThreadedSecurityLoader extends ThreadedLoader<PricedSecurity>  {
             SimpleDateFormat fmt = new SimpleDateFormat("dd-MMM-yyyy");
             Security security = new Security(lineArr[0], lineArr[1], lineArr[2], fmt.parse(lineArr[3]), lineArr[6]);
             if (!securities.contains(security))
-                securities.add(new PricedSecurity(security));
+                securities.add(security);
         }
         return securities;
     }
