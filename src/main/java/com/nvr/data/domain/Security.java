@@ -25,14 +25,14 @@ public class Security implements Serializable {
     String series;
     Date listing;
     String isinNumber;
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE},fetch = FetchType.EAGER)
     @JsonIgnore
     List<Indice> indiceList;
 
     @OneToMany (cascade = {CascadeType.PERSIST,CascadeType.REFRESH,CascadeType.MERGE})
     @JsonIgnore
     List<Price> prices;
-
+    Date lastPricedOn;
     boolean priced=false;
 
     public Security() {
@@ -50,13 +50,28 @@ public class Security implements Serializable {
         prices =new ArrayList<Price>();
     }
 
+    public void setLastPricedOn(Date lastPricedOn) {
+        this.lastPricedOn = lastPricedOn;
+    }
+
+    public Date getLastPricedOn() {
+        return lastPricedOn;
+    }
+
     public void addIndex(Indice indice){
         indiceList.add(indice);
     }
 
     public void addPrice(Price price){
-        prices.add(price);
-        priced=true;
+        if (price!=null){
+            List<Price> priceList=new ArrayList<Price>(prices.size()+1);
+            priceList.add(price);
+            priceList.addAll(prices);
+            prices=priceList;
+            priced=true;
+            lastPricedOn=price.getPriceDate();
+        }
+
     }
 
     public List<Price> getPrices() {
@@ -64,8 +79,11 @@ public class Security implements Serializable {
     }
 
     public void setPrices(List<Price> prices) {
-        this.prices = prices;
-        priced=true;
+        if (!prices.isEmpty()){
+            this.prices = prices;
+            lastPricedOn=prices.get(0) .getPriceDate();
+            priced=true;
+        }
     }
 
     public boolean isPriced() {

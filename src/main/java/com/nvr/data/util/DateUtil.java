@@ -30,4 +30,26 @@ public class DateUtil {
         }
         return date;  //To change body of created methods use File | Settings | File Templates.
     }
+    public static Date getNextDate(Date date){
+        Calendar calendar=new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE,1);
+        return calendar.getTime();
+    }
+    public static int compareDates(Date date, Date date1){
+        Calendar calendar=new GregorianCalendar();
+        Calendar calendar1=new GregorianCalendar();
+        calendar.setTime(date);
+        calendar1.setTime(date1);
+        if (calendar.get(Calendar.YEAR)<calendar1.get(Calendar.YEAR)||
+                calendar.get(Calendar.MONTH)<calendar1.get(Calendar.MONTH)||
+                calendar.get(Calendar.DATE)<calendar1.get(Calendar.DATE)){
+            return -1;
+        }else if(calendar.get(Calendar.YEAR)==calendar1.get(Calendar.YEAR)||
+                calendar.get(Calendar.MONTH)==calendar1.get(Calendar.MONTH)||
+                calendar.get(Calendar.DATE)==calendar1.get(Calendar.DATE))
+            return 0;
+        else
+            return 1;
+    }
 }

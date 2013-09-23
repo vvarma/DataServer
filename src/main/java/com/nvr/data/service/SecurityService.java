@@ -21,5 +21,6 @@ public interface SecurityService {
     public List<Security> getAllPricedSecurities();
     public Security getSecurity(String symbol);
     public Security getSecurity(String symbol,String series);
+    public void updateSecurity( Price price,String symbol,String series);
 
 }

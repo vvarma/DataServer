@@ -75,7 +75,7 @@ public class PostInitializerRunner implements ApplicationListener {
             }
         }
     }
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     private void transactionalStuffHere(PostInitializingMethod postInitializingMethod){
         Method method = postInitializingMethod.getMethod();
         try {

@@ -93,10 +93,12 @@ public class ServiceInitializer {
 
             Set<Security> securitySet = new HashSet<Security>();
             for (Security security : securities) {
-                if (!security.getIndiceList().isEmpty()) {
+                if (!security.getIndiceList().isEmpty() && !security.isPriced()) {
                     securitySet.add(security);
                 }
             }
+
+
             CountDownLatch thirdLatch = new CountDownLatch(securitySet.size());
             for (Security security : securitySet) {
                 completionService.submit(getPricedSecurityWorker(security, thirdLatch));

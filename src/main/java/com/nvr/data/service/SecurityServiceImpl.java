@@ -3,14 +3,25 @@ package com.nvr.data.service;
 import com.nvr.data.domain.Price;
 import com.nvr.data.domain.Security;
 import com.nvr.data.domain.SecurityId;
+import com.nvr.data.loader.DailyPriceLoader;
 import com.nvr.data.repository.SecurityJpaDao;
 import com.nvr.data.service.annotation.AppService;
+import com.nvr.data.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,6 +35,8 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Autowired
     SecurityJpaDao securityJpaDao;
+
+
     final static Logger LOGGER= LoggerFactory.getLogger(SecurityService.class);
 
 
@@ -40,7 +53,16 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public List<Security> getAllPricedSecurities() {
-        return securityJpaDao.findByPriced(true);
+        List<Security> securities=securityJpaDao.findByPriced(true);
+        for (Security security:securities){
+            if(!security.getPrices().isEmpty()){
+                security.setLastPricedOn(security.getPrices().get(0).getPriceDate());
+            }else{
+                LOGGER.error("Security "+security.getSymbol()+" is priced but no prices!");
+            }
+
+        }
+        return securities;
     }
 
     @Override
@@ -62,5 +84,24 @@ public class SecurityServiceImpl implements SecurityService {
         securityId.setSeries(series);
         securityId.setSymbol(symbol);
         return securityJpaDao.findOne(securityId);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void updateSecurity(Price price, String symbol, String series) {
+        SecurityId securityId=new SecurityId();
+        securityId.setSeries(series);
+        securityId.setSymbol(symbol);
+        Security security=securityJpaDao.findOne(securityId);
+        price.setSecurity(security);
+        security.addPrice(price);
+        securityJpaDao.save(security);
+
+    }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    private void updateSecurity(Price price, Security security) {
+        price.setSecurity(security);
+        security.addPrice(price);
+        securityJpaDao.save(security);
     }
 }

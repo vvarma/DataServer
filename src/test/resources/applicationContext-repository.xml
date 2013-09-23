@@ -32,7 +32,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
         </property>
         <property name="jpaProperties">
             <map>
-                <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
+                <entry key="hibernate.hbm2ddl.auto" value="update"/>
             </map>
         </property>
     </bean>
@@ -46,7 +46,7 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
         <property name="entityManagerFactory" ref="myEmf"/>
     </bean>
     <tx:annotation-driven transaction-manager="txManager"/>
-    <jpa:repositories base-package="com.nvr.data.repository" transaction-manager-ref="txManager"/>
+    <jpa:repositories  base-package="com.nvr.data.repository" transaction-manager-ref="txManager"/>
 
 </beans>
 

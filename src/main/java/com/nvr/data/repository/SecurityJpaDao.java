@@ -25,6 +25,6 @@ public interface SecurityJpaDao extends JpaRepository<Security,SecurityId>{
     List<Security> findByPriced(Boolean priced);
 
 
-    @Query("SELECT p FROM Price p join p.security s where s.symbol=?1 and s.series=?2 and p.priceDate between ?3 and ?4")
+    @Query("SELECT p FROM Security s join s.prices p where s.symbol=?1 and s.series=?2 and p.priceDate between ?3 and ?4")
     List<Price> getSecurityPricesBetween(String symbol, String series, Date fromDate, Date toDate);
 }
