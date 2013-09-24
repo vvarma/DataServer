@@ -3,12 +3,9 @@ package com.nvr.data.service;
 import com.nvr.data.domain.Price;
 import com.nvr.data.domain.Security;
 import com.nvr.data.loader.DailyPriceLoader;
-import com.nvr.data.service.annotation.AppService;
 import com.nvr.data.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -41,13 +38,13 @@ public class AdvSecService {
         System.out.println("yoyo++"+date);
         SimpleDateFormat fmt=new SimpleDateFormat("dd-MMM-yyyy");
         for (Date d= DateUtil.getNextDate(date);DateUtil.compareDates(d,new Date())<=0;d=DateUtil.getNextDate(d)){
-            if (DateUtil.isWeekday(d)){
+            if (!DateUtil.isWeekend(d)){
                 Map<String,String> paramMap=new HashMap<String, String>();
                 paramMap.put("seedUrl","http://www.nseindia.com/content/historical/EQUITIES/");
-                paramMap.put("date",fmt.format(date));
+                paramMap.put("date",fmt.format(d));
                 try {
                     URL url=dailyPriceLoader.generateUrlGivenParamMap(paramMap);
-                    String file=dailyPriceLoader.downloadFileGivenUrl(url,fmt.format(date)+".csv");
+                    String file=dailyPriceLoader.downloadFileGivenUrl(url,fmt.format(d)+".csv");
                     List<Price> priceList=dailyPriceLoader.parseFileAndReturnListOfEntity(file);
                     for (Security security:securities){
                         for (Price price:priceList){

@@ -54,14 +54,6 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public List<Security> getAllPricedSecurities() {
         List<Security> securities=securityJpaDao.findByPriced(true);
-        for (Security security:securities){
-            if(!security.getPrices().isEmpty()){
-                security.setLastPricedOn(security.getPrices().get(0).getPriceDate());
-            }else{
-                LOGGER.error("Security "+security.getSymbol()+" is priced but no prices!");
-            }
-
-        }
         return securities;
     }
 

@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
  * To change this template use File | Settings | File Templates.
  */
 public class DateUtil {
-    public static boolean isWeekday(Date date){
+    public static boolean isWeekend(Date date){
         Calendar calendar=new GregorianCalendar();
         calendar.setTime(date);
         if (calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SATURDAY||calendar.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)
@@ -22,7 +22,7 @@ public class DateUtil {
     }
 
     public static Date getLastWorkingDate(Date date) {
-        while (isWeekday(date)){
+        while (isWeekend(date)){
             Calendar calendar=new GregorianCalendar();
             calendar.setTime(date);
             calendar.add(Calendar.DATE,-1);
