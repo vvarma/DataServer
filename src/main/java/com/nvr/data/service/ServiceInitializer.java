@@ -44,24 +44,29 @@ public class ServiceInitializer {
 
     @PostInitialize(order = 1)
     public void initServices() {
+        LOGGER.info("Initialising..");
         List<Security> securities = securityJpaDao.findAll();
         if (securities.isEmpty()) {
             fullInitialise();
         }
+        LOGGER.info("First step completed..");
     }
 
     @PostInitialize(order = 2)
     public void initServicesP2() {
         fullInitialise2();
+        LOGGER.info("Initialising completed.");
 
     }
 
     private void fullInitialise() {
+        LOGGER.info("Initialising Securities and Indices..");
         CountDownLatch firstLatch = new CountDownLatch(2);
         Future<List<Security>> listFutureSecurity = completionService.submit(getSecurityWorker(firstLatch));
         Future<List<Indice>> listFutureIndice = completionService.submit(getIndexWorker(firstLatch));
         try {
             firstLatch.await();
+            LOGGER.info("Forming relations: Security-Indice");
             List<Security> securities = listFutureSecurity.get();
             List<Indice> indices = listFutureIndice.get();
             CountDownLatch secondLatch = new CountDownLatch(indices.size());
@@ -74,11 +79,12 @@ public class ServiceInitializer {
                     security.addIndex(indice);
                 }
             }
+            LOGGER.info("Saving to Database..");
             for (Security security : securities) {
                 securityJpaDao.save(security);
                 System.out.println(security);
             }
-
+            LOGGER.info("Security Indice Initiation Complete");
         } catch (InterruptedException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ExecutionException e) {
@@ -89,6 +95,7 @@ public class ServiceInitializer {
 
     private void fullInitialise2() {
         try {
+            LOGGER.info("Initialising Security Prices..");
             List<Security> securities = securityJpaDao.findAll();
 
             Set<Security> securitySet = new HashSet<Security>();
@@ -105,9 +112,11 @@ public class ServiceInitializer {
             }
 
             thirdLatch.await();
+            LOGGER.info("Saving to Database.");
             for (Security security : securitySet) {
                 securityJpaDao.save(security);
             }
+            LOGGER.info("Security Price initiation complete..");
         } catch (InterruptedException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

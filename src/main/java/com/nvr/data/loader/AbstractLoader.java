@@ -33,8 +33,6 @@ public abstract class AbstractLoader<T> implements Loader<T>{
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println(123);
-        System.out.println(path);
         writer.close();
         reader.close();
 

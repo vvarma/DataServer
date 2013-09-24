@@ -45,8 +45,8 @@ public class DateUtil {
                 calendar.get(Calendar.MONTH)<calendar1.get(Calendar.MONTH)||
                 calendar.get(Calendar.DATE)<calendar1.get(Calendar.DATE)){
             return -1;
-        }else if(calendar.get(Calendar.YEAR)==calendar1.get(Calendar.YEAR)||
-                calendar.get(Calendar.MONTH)==calendar1.get(Calendar.MONTH)||
+        }else if(calendar.get(Calendar.YEAR)==calendar1.get(Calendar.YEAR)&&
+                calendar.get(Calendar.MONTH)==calendar1.get(Calendar.MONTH)&&
                 calendar.get(Calendar.DATE)==calendar1.get(Calendar.DATE))
             return 0;
         else

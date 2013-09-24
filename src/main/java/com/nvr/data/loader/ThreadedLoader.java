@@ -1,5 +1,8 @@
 package com.nvr.data.loader;
 
+import com.nvr.data.service.SecurityService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +29,7 @@ public abstract class  ThreadedLoader<T> extends AbstractLoader<T> implements Ca
     Map<String,String> paramMap=new HashMap<String, String>();
     String fileName;
     CountDownLatch latch;
-
+    final static Logger LOGGER = LoggerFactory.getLogger(SecurityService.class);
     protected ThreadedLoader(Map<String, String> paramMap, String fileName, CountDownLatch latch) {
         this.paramMap = paramMap;
         this.fileName = fileName;
@@ -35,15 +38,19 @@ public abstract class  ThreadedLoader<T> extends AbstractLoader<T> implements Ca
 
     @Override
     public List<T> call() {
+        LOGGER.debug("Running on thread" );
         List<T> tList=null;
         try {
             URL url =generateUrlGivenParamMap(paramMap);
+            LOGGER.debug("Url generated "+url.toString());
             fileName=downloadFileGivenUrl(url,fileName);
+            LOGGER.debug("File downloaded "+fileName);
             tList=parseFileAndReturnListOfEntity(fileName);
+            LOGGER.debug("Completed");
         } catch (IOException e) {
-            e.getMessage();
+            LOGGER.debug("Exception ",e);
         } catch (ParseException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            LOGGER.debug("Exception ",e);
         }finally {
             latch.countDown();
         }
